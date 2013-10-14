@@ -1,6 +1,6 @@
 {
 	"name": "url-loader",
-	"version": "0.5.1",
+	"version": "0.5.2",
 	"author": "Tobias Koppers @sokra",
 	"description": "url loader module for webpack",
 	"dependencies": {

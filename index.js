@@ -10,11 +10,13 @@ module.exports = function(content) {
 	if(query.limit) {
 		limit = parseInt(query.limit, 10);
 	}
-	var minetype = null;
+	var mimetype = null;
 	if(query.minetype)
-		minetype = query.minetype
+		mimetype = query.minetype
+	if(query.mimetype)
+		mimetype = query.mimetype
 	if(limit < 0 || content.length < limit) {
-		return "module.exports = " + JSON.stringify("data:" + (minetype ? minetype + ";" : "") + "base64," + content.toString("base64"));
+		return "module.exports = " + JSON.stringify("data:" + (mimetype ? mimetype + ";" : "") + "base64," + content.toString("base64"));
 	} else {
 		var fileLoader = require("file-loader");
 		return fileLoader.call(this, content);
