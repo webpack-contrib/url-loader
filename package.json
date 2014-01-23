@@ -7,6 +7,10 @@
 		"file-loader": "0.5.x",
 		"loader-utils": "0.2.x"
 	},
+	"repository": {
+		"type": "git",
+		"url": "git@github.com:webpack/url-loader.git"
+	},
 	"licenses": [
 		{
 			"type": "MIT",
