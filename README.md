@@ -2,6 +2,8 @@
 
 ## Usage
 
+[Documentation: Using loaders](http://webpack.github.io/docs/using-loaders.html)
+
 The `url` loader works like the `file` loader, but can return a Data Url if it 
 is supported by browser and the file is smaller than a limit.
 
