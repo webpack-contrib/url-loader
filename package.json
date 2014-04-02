@@ -4,9 +4,11 @@
 	"author": "Tobias Koppers @sokra",
 	"description": "url loader module for webpack",
 	"dependencies": {
-		"file-loader": "0.5.x",
 		"loader-utils": "0.2.x",
 		"mime": "1.2.x"
+	},
+	"peerDependencies": {
+		"file-loader": "*"
 	},
 	"repository": {
 		"type": "git",
