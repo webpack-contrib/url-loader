@@ -3,6 +3,7 @@
 	Author Tobias Koppers @sokra
 */
 var loaderUtils = require("loader-utils");
+var mime = require("mime");
 module.exports = function(content) {
 	this.cacheable && this.cacheable();
 	var query = loaderUtils.parseQuery(this.query);
@@ -10,11 +11,7 @@ module.exports = function(content) {
 	if(query.limit) {
 		limit = parseInt(query.limit, 10);
 	}
-	var mimetype = null;
-	if(query.minetype)
-		mimetype = query.minetype
-	if(query.mimetype)
-		mimetype = query.mimetype
+	var mimetype = query.mimetype || query.minetype || mime.lookup(this.resourcePath);
 	if(limit <= 0 || content.length < limit) {
 		return "module.exports = " + JSON.stringify("data:" + (mimetype ? mimetype + ";" : "") + "base64," + content.toString("base64"));
 	} else {
