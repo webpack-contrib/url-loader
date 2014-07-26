@@ -14,7 +14,7 @@ require("url?limit=10000!./file.png");
 // => DataUrl if "file.png" is smaller that 10kb
 
 require("url?mimetype=image/png!./file.png");
-// => Specify mimetype for the file (Do this ever!)
+// => Specify mimetype for the file (Do this always!)
 
 require("url?prefix=img/!./file.png");
 // => Parameters for the file-loader are valid too
