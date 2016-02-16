@@ -134,6 +134,25 @@ extensions will be used to lookup the MIME type.
 }
 ```
 
+### `base64`
+
+Type: `Boolean`
+Default: `true`
+
+Determines if data URIs are base64 encoded. By default URIs _are_ base64-encoded,
+but that can be disabled by setting this option to `false`. This may be desired, 
+for example, when encoding SVGs which do not need to be base64 encoded.
+
+```js
+// webpack.config.js
+{
+  loader: 'url-loader',
+  options: {
+    base64: false
+  }
+}
+```
+
 ## Contributing
 
 Please take a moment to read our contributing guidelines if you haven't yet done so.

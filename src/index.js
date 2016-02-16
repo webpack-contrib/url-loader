@@ -36,8 +36,15 @@ export default function loader(src) {
       src = Buffer.from(src);
     }
 
+    // Default to using base64 encoding unless the option was explicitly set to false.
+    const base64 = !(options.base64 === false);
+
+    const data = base64
+      ? src.toString('base64')
+      : escape(src.toString('binary'));
+
     return `module.exports = ${JSON.stringify(
-      `data:${mimetype || ''};base64,${src.toString('base64')}`
+      `data:${mimetype || ''}${base64 ? ';base64' : ''},${data}`
     )}`;
   }
 

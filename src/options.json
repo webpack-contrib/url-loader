@@ -7,6 +7,9 @@
     "mimetype": {
       "type": "string"
     },
+    "base64": {
+      "type": "boolean"
+    },
     "fallback": {
       "anyOf": [
         {
