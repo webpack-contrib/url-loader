@@ -1,14 +1,11 @@
 {
-  "name": "url-loader",
-  "version": "0.5.7",
-  "author": "Tobias Koppers @sokra",
-  "description": "url loader module for webpack",
+  "name": "cdn-url-loader",
+  "version": "0.1.0",
+  "author": "Jason Dufair jase@dufair.org and Tobias Koppers @sokra",
+  "description": "CDN and url loader module for webpack",
   "dependencies": {
     "loader-utils": "0.2.x",
     "mime": "1.2.x"
-  },
-  "peerDependencies": {
-    "file-loader": "*"
   },
   "repository": {
     "type": "git",
