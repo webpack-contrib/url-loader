@@ -1,4 +1,4 @@
-# url loader for webpack
+# CDN and data url loader for webpack
 
 ## Usage
 
