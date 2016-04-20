@@ -15,7 +15,13 @@ module.exports = function(content) {
 	if(limit <= 0 || content.length < limit) {
 		return "module.exports = " + JSON.stringify("data:" + (mimetype ? mimetype + ";" : "") + "base64," + content.toString("base64"));
 	} else {
-		return "module.exports = " + query.cdnUrl + query.name;
+		var url = loaderUtils.interpolateName(this, query.name, {
+				context: query.context || this.options.context,
+				content: content,
+				regExp: query.regExp
+			});
+		this.emitFile(url, content);
+		return "module.exports = " + JSON.stringify(query.cdnUrl + url);
 	}
 }
 module.exports.raw = true;
