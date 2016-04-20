@@ -15,8 +15,7 @@ module.exports = function(content) {
 	if(limit <= 0 || content.length < limit) {
 		return "module.exports = " + JSON.stringify("data:" + (mimetype ? mimetype + ";" : "") + "base64," + content.toString("base64"));
 	} else {
-		var fileLoader = require("file-loader");
-		return fileLoader.call(this, content);
+		return "module.exports = " + query.cdnUrl + query.name;
 	}
 }
 module.exports.raw = true;
