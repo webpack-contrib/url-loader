@@ -11,7 +11,7 @@ module.exports = function(content) {
 	if(query.limit) {
 		limit = parseInt(query.limit, 10);
 	}
-	var mimetype = query.mimetype || query.minetype || mime.lookup(this.resourcePath);
+	var mimetype = query.mimetype || mime.lookup(this.resourcePath);
 	if(limit <= 0 || content.length < limit) {
 		return "module.exports = " + JSON.stringify("data:" + (mimetype ? mimetype + ";" : "") + "base64," + content.toString("base64"));
 	} else {
