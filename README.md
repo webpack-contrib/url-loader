@@ -4,11 +4,11 @@
 
 [Documentation: Using loaders](http://webpack.github.io/docs/using-loaders.html)
 
-The `url` loader works like the `file` loader, but can return a Data Url if the file is smaller than a limit.
+The `url` loader works like the `file` loader, but can return a Data Url if the file is smaller than a byte limit.
 
 The limit can be specified with a query parameter. (Defaults to no limit)
 
-If the file is greater than the limit the [`file-loader`](https://github.com/webpack/file-loader) is used and all query parameters are passed to it.
+If the file is greater than the limit (in bytes) the [`file-loader`](https://github.com/webpack/file-loader) is used and all query parameters are passed to it.
 
 ``` javascript
 require("url?limit=10000!./file.png");
