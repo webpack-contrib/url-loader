@@ -12,7 +12,7 @@ If the file is greater than the limit (in bytes) the [`file-loader`](https://git
 
 ``` javascript
 require("url?limit=10000!./file.png");
-// => DataUrl if "file.png" is smaller that 10kb
+// => DataUrl if "file.png" is smaller than 10kb
 
 require("url?mimetype=image/png!./file.png");
 // => Specify mimetype for the file (Otherwise it's inferred from extension.)
