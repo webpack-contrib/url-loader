@@ -11,13 +11,13 @@ The limit can be specified with a query parameter. (Defaults to no limit)
 If the file is greater than the limit (in bytes) the [`file-loader`](https://github.com/webpack/file-loader) is used and all query parameters are passed to it.
 
 ``` javascript
-require("url?limit=10000!./file.png");
+require("url-loader?limit=10000!./file.png");
 // => DataUrl if "file.png" is smaller than 10kb
 
-require("url?mimetype=image/png!./file.png");
+require("url-loader?mimetype=image/png!./file.png");
 // => Specify mimetype for the file (Otherwise it's inferred from extension.)
 
-require("url?prefix=img/!./file.png");
+require("url-loader?prefix=img/!./file.png");
 // => Parameters for the file-loader are valid too
 //    They are passed to the file-loader if used.
 ```
