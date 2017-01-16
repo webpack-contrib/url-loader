@@ -1,6 +1,25 @@
-# url loader for webpack
+[![npm][npm]][npm-url]
+[![node][node]][node-url]
+[![deps][deps]][deps-url]
+[![tests][tests]][tests-url]
+[![coverage][cover]][cover-url]
+[![chat][chat]][chat-url]
 
-## Usage
+<div align="center">
+  <a href="https://github.com/webpack/webpack">
+    <img width="200" height="200"
+      src="https://webpack.js.org/assets/icon-square-big.svg">
+  </a>
+  <h1>Url Loader</h1>
+</div>
+
+<h2 align="center">Install</h2>
+
+```bash
+npm install --save-dev url-loader
+```
+
+<h2 align="center">Usage</h2>
 
 [Documentation: Using loaders](http://webpack.github.io/docs/using-loaders.html)
 
@@ -22,6 +41,50 @@ require("url-loader?prefix=img/!./file.png");
 //    They are passed to the file-loader if used.
 ```
 
-## License
+<h2 align="center">Contributing</h2>
 
-MIT (http://www.opensource.org/licenses/mit-license.php)
+Don't hesitate to create a pull request. Every contribution is appreciated. In development you can start the tests by calling `npm test`.
+
+<h2 align="center">Maintainers</h2>
+
+<table>
+  <tbody>
+    <tr>
+      <td align="center">
+        <img width="150 height="150"
+        src="https://avatars.githubusercontent.com/sokra?v=3">
+        <br />
+        <a href="https://github.com/">Tobias Koppers</a>
+      </td>
+      <td align="center">
+        <img width="150 height="150"
+        src="https://avatars.githubusercontent.com/SpaceK33z?v=3">
+        <br />
+        <a href="https://github.com/">Kees Kluskens</a>
+      </td>
+    <tr>
+  <tbody>
+</table>
+
+
+<h2 align="center">LICENSE</h2>
+
+#### [MIT](./LICENSE)
+
+[npm]: https://img.shields.io/npm/v/url-loader.svg
+[npm-url]: https://npmjs.com/package/url-loader
+
+[node]: https://img.shields.io/node/v/url-loader.svg
+[node-url]: https://nodejs.org
+
+[deps]: https://david-dm.org/webpack/url-loader.svg
+[deps-url]: https://david-dm.org/webpack/url-loader
+
+[tests]: http://img.shields.io/travis/webpack/url-loader.svg
+[tests-url]: https://travis-ci.org/webpack/url-loader
+
+[cover]: https://coveralls.io/repos/github/webpack/url-loader/badge.svg
+[cover-url]: https://coveralls.io/github/webpack/url-loader
+
+[chat]: https://badges.gitter.im/webpack/webpack.svg
+[chat-url]: https://gitter.im/webpack/webpack
