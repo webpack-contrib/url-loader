@@ -20,7 +20,7 @@ module.exports = function(content) {
 
     // No limits or limit more than content length
     if(!limit || content.length < limit) {
-        if(typeof content === 'string') {
+        if(typeof content === "string") {
             content = new Buffer(content);
         }
         return "module.exports = " + JSON.stringify("data:" + (mimetype ? mimetype + ";" : "") + "base64," + content.toString("base64"));
