@@ -1,0 +1,6 @@
+{
+  "file": "limit",
+  "options": {
+    "limit": 8192
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "limit": {
+      "type": "number",
+      "description": "Byte Limit"
+    },
+    "mimetype": {
+      "type": "string",
+      "description": "MIME Type"
+    }
+  },
+  "additionalProperties": false
+}
