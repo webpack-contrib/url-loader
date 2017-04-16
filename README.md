@@ -21,7 +21,7 @@ npm install --save-dev url-loader
 
 <h2 align="center">Usage</h2>
 
-[Documentation: Using loaders](http://webpack.github.io/docs/using-loaders.html)
+[Documentation: Using loaders](https://webpack.js.org/concepts/loaders/)
 
 The `url` loader works like the `file` loader, but can return a Data Url if the file is smaller than a byte limit.
 
