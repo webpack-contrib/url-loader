@@ -25,7 +25,7 @@ The `url` loader works like the `file` loader, but can return a Data Url if the 
 
 The limit can be specified with a query parameter. (Defaults to no limit)
 
-If the file is greater than the limit (in bytes) the [`file-loader`](https://github.com/webpack/file-loader) is used and all query parameters are passed to it.
+If the file is greater than the limit (in bytes) the [`file-loader`](https://github.com/webpack/file-loader) is used and all query parameters are passed to it; to custom the output,`publicPath` `outputPath` and other params can be used, more detail see [`file-loader`](https://github.com/webpack/file-loader).
 
 ``` javascript
 require("url-loader?limit=10000!./file.png");
