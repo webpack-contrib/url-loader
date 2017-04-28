@@ -13,7 +13,7 @@ module.exports = function(content) {
 	}
 	var mimetype = query.mimetype || query.minetype || mime.lookup(this.resourcePath);
 	if(limit <= 0 || content.length < limit) {
-		return "module.exports = " + JSON.stringify("data:" + (mimetype ? mimetype + ";" : "") + "base64," + content.toString("base64"));
+		return "export default " + JSON.stringify("data:" + (mimetype ? mimetype + ";" : "") + "base64," + content.toString("base64"));
 	} else {
 		var fileLoader = require("file-loader");
 		return fileLoader.call(this, content);
