@@ -1,5 +1,8 @@
+/* eslint-disable */
+
 import fixture from '../fixtures/file.png';
 
-test('Limit', () => {
+test('URL', () => {
+  console.log(fixture);
   expect(fixture).toEqual();
 });

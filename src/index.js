@@ -1,50 +1,64 @@
-import { getOptions } from 'loader-utils';
-// import { validateOptions }  from 'schema-utils';
-/* eslint-disable import/order */
-import { lookup } from 'mime';
+import { getOptions } from 'loader-utils'; // eslint-disable-line
+import validateOptions  from 'schema-utils'; //eslint-disable-line
+
+import { lookup } from 'mime'; // eslint-disable-line
+import loader from 'file-loader'; // eslint-disable-line
 
 /**
  * URL Loader
  *
- * > Inlines files as Base64 encoded DataURL
+ * > Inline files as `base64` encoded URL
  *
  * @author Tobias Koppers (@sokra)
- *         Michael Ciniawsky (@michael-cinaiwsky) <michael.ciniawsky@gmail.com>
+ *
  * @version 1.0.0
  * @license MIT
  *
  * @module url-loader
  *
- * @requires loaderUtils
- * @requires schemaUtils
+ * @requires loader-utils
+ * @requires schema-utils
  *
  * @requires mime
+ * @requires 'file-loader'
  *
  * @method loader
  *
- * @param  {String} file File
+ * @param  {String} src Source
  *
- * @return {String|Function} url Url
+ * @return {callback}   url Url/File
  */
-export default function (file) {
+export default function (src) {
+  const cb = this.async();
+  const file = this.resourcePath;
+
   const options = getOptions(this) || {};
 
-  // validateOptions('./schema', options, 'URL Loader')
+  validateOptions(require('./options.json'), options, 'URL Loader'); // eslint-disable-line
 
-  let limit = (
-    this.options && this.options.url && this.options.url.dataUrlLimit
-  ) || 0;
+  options.limit = options.limit ? parseInt(options.limit, 10) : 0;
+  options.mimetype = options.mimetype || lookup(file);
+  options.encoding = options.encoding || 'base64';
 
-  if (options.limit) {
-    limit = parseInt(options.limit, 10);
+  if (options.limit <= 0 || src.length < options.limit) {
+    const result = `export default ${
+        JSON.stringify(`data:${options.mimetype ? `${options.mimetype};` : ''
+      }${options.encoding},${src.toString(options.encoding)}`)}`;
+
+    const map = {
+      version: 3,
+      file: '',
+      names: [],
+      mappings: '',
+      sourceRoot: '',
+      sources: [''],
+      sourcesContent: [''] // eslint-disable-line
+    };
+
+    const meta = { locals: { hello: 'Hello World!' } };
+
+    return cb(null, result, map, meta);
   }
 
-  const mime = options.mimetype || lookup(this.resourcePath);
-
-  if (limit <= 0 || file.length < limit) {
-    return `module.exports = ${JSON.stringify(`data:${mime ? `${mime};` : ''} base64,${file.toString('base64')}`)}`;
-  }
-  /* eslint-disable global-require, import/no-unresolved */
-  const fileLoader = require('file-loader');
-  return fileLoader.call(this, file);
+  return cb(null, loader.call(this, src));
 }

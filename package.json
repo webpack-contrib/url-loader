@@ -12,51 +12,53 @@
   },
   "dependencies": {
     "loader-utils": "^1.1.0",
-    "mime": "1.3.x"
+    "mime": "1.3.x",
+    "schema-utils": "^0.3.0"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
-    "babel-jest": "^19.0.0",
+    "babel-jest": "^20.0.3",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-polyfill": "^6.23.0",
-    "babel-preset-env": "^1.3.3",
-    "cross-env": "^4.0.0",
-    "del-cli": "^0.2.1",
+    "babel-preset-env": "^1.5.2",
+    "cross-env": "^5.0.0",
+    "del-cli": "^1.0.0",
     "eslint": "^3.19.0",
-    "eslint-config-webpack": "^1.2.1",
+    "eslint-config-webpack": "^1.2.2",
     "eslint-plugin-import": "^2.2.0",
-    "fs-extra": "^2.1.2",
-    "jest": "^19.0.2",
+    "fs-extra": "^3.0.0",
+    "jest": "^20.0.4",
     "jsdoc-to-markdown": "^3.0.0",
-    "lint-staged": "^3.4.0",
+    "lint-staged": "^3.4.1",
     "nsp": "^2.6.3",
     "pre-commit": "^1.2.2",
-    "standard-version": "^4.0.0",
-    "webpack": "^2.3.3",
-    "webpack-defaults": "^0.4.5"
+    "standard-version": "^4.1.0",
+    "webpack": "^2.6.1",
+    "webpack-defaults": "^1.3.0"
   },
   "peerDependencies": {
-    "file-loader": "*"
+    "file-loader": "*",
+    "webpack": "^2.0.0 || >= 3.0.0-rc.0 || ^3.0.0"
   },
   "scripts": {
-    "webpack-defaults": "webpack-defaults",
-    "start": "yarn run build -- -w",
+    "start": "npm run build -- -w",
     "build": "cross-env NODE_ENV=production babel src -d dist --ignore 'src/**/*.test.js'",
-    "clean": "del-cli dist test/builds",
+    "clean": "del-cli dist",
     "docs": "jsdoc2md src/index.js > LOADER.md",
     "lint": "eslint --cache src test",
     "lint-staged": "lint-staged",
-    "prebuild": "yarn run clean",
-    "prepublish": "yarn run build",
-    "release": "yarn run standard-version",
+    "prebuild": "npm run clean",
+    "prepublish": "npm run build",
+    "release": "standard-version",
     "security": "nsp check",
-    "pretest": "yarn run build && node test/webpack.build.js",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --collectCoverageFrom='src/**/*.js' --coverage",
-    "travis:coverage": "yarn run test:coverage",
-    "travis:lint": "yarn run lint && yarn run security",
-    "travis:test": "yarn run test"
+    "travis:coverage": "npm run test:coverage -- --runInBand",
+    "travis:lint": "npm run lint && npm run security",
+    "travis:test": "npm run test -- --runInBand",
+    "webpack-defaults": "webpack-defaults",
+    "appveyor:test": "npm run test"
   },
   "pre-commit": "lint-staged",
   "lint-staged": {
@@ -72,6 +74,6 @@
   "bugs": {
     "url": "https://github.com/webpack-contrib/url-loader/issues"
   },
-  "homepage": "https://webpack.js.org",
+  "homepage": "https://github.com/webpack-contrib/url-loader",
   "license": "MIT"
 }
