@@ -1,6 +1,6 @@
 {
   "name": "url-loader",
-  "version": "0.5.8",
+  "version": "0.5.9",
   "author": "Tobias Koppers @sokra",
   "description": "url loader module for webpack",
   "license": "MIT",
