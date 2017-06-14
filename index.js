@@ -22,13 +22,15 @@ module.exports = function(content) {
 
   var mimetype = options.mimetype || options.minetype || mime.lookup(this.resourcePath);
 
+  var encoding = options.encoding || 'base64';
+
   // No limits or limit more than content length
   if(!limit || content.length < limit) {
     if(typeof content === "string") {
       content = new Buffer(content);
     }
 
-    return "module.exports = " + JSON.stringify("data:" + (mimetype ? mimetype + ";" : "") + "base64," + content.toString("base64"));
+    return "module.exports = " + JSON.stringify("data:" + (mimetype ? mimetype + ";" : "") + options.encoding + "," + content.toString(options.encoding));
   }
 
   var fileLoader = require("file-loader");

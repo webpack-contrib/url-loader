@@ -55,8 +55,9 @@ module.exports = {
 |Name|Type|Default|Description|
 |:--:|:--:|:-----:|:----------|
 |**`limit`**|`{Number}`|`undefined`|Byte limit to inline files as Data URL|
+|**`prefix`**|`{String}`|`false`|Parameters for the [`file-loader`](https://github.com/webpack-contrib/file-loader) are valid too They are passed to the file-loader if used|
 |**`mimetype`**|`{String}`|`extname`|Specify MIME type for the file (Otherwise it's inferred from the file extension)|
-|**`prefix`**|`{String}`|`false`|Parameters for the [`file-loader`](https://github.com/webpack-contrib/file-loader) are valid too. They are passed to the file-loader if used|
+|**`encoding`**|`{Boolean|String}`|`base64`|Specify the encoding which the file will be inlined with|
 
 ### `limit`
 
@@ -70,6 +71,17 @@ The limit can be specified via loader options and defaults to no limit.
   loader: 'url-loader',
   options: {
     limit: 8192
+  }
+}
+```
+
+### `prefix`
+
+```js
+{
+  loader: 'url-loader',
+  options: {
+    prefix: 'img'
   }
 }
 ```
@@ -88,13 +100,15 @@ Set the MIME type for the file. If unspecified the file extensions will be used 
 }
 ```
 
-### `prefix`
+### `encoding`
+
+Specify the encoding of the file.
 
 ```js
 {
   loader: 'url-loader',
   options: {
-    prefix: 'img'
+    encoding: 'utf-8'
   }
 }
 ```
