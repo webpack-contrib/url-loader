@@ -56,7 +56,6 @@ module.exports = {
 |:--:|:--:|:-----:|:----------|
 |**`limit`**|`{Number}`|`undefined`|Byte limit to inline files as Data URL|
 |**`mimetype`**|`{String}`|`extname`|Specify MIME type for the file (Otherwise it's inferred from the file extension)|
-|**`prefix`**|`{String}`|`false`|Parameters for the [`file-loader`](https://github.com/webpack-contrib/file-loader) are valid too. They are passed to the file-loader if used|
 
 ### `limit`
 
@@ -84,17 +83,6 @@ Set the MIME type for the file. If unspecified the file extensions will be used 
   loader: 'url-loader',
   options: {
     mimetype: 'image/png'
-  }
-}
-```
-
-### `prefix`
-
-```js
-{
-  loader: 'url-loader',
-  options: {
-    prefix: 'img'
   }
 }
 ```
