@@ -56,10 +56,12 @@ module.exports = {
 |:--:|:--:|:-----:|:----------|
 |**`limit`**|`{Number}`|`undefined`|Byte limit to inline files as Data URL|
 |**`mimetype`**|`{String}`|`extname`|Specify MIME type for the file (Otherwise it's inferred from the file extension)|
+|**`fallback`**|`{String}`|`file-loader`|Specify `loader` for the file when file is greater than the limit (in bytes)|
 
 ### `limit`
 
-If the file is greater than the limit (in bytes) the [`file-loader`](https://github.com/webpack-contrib/file-loader) is used and all query parameters are passed to it.
+If the file is greater than the limit (in bytes) the [`file-loader`](https://github.com/webpack-contrib/file-loader) is used by default and all query parameters are passed to it.
+You can use other loader using `fallback` option.
 
 The limit can be specified via loader options and defaults to no limit.
 
@@ -83,6 +85,18 @@ Set the MIME type for the file. If unspecified the file extensions will be used 
   loader: 'url-loader',
   options: {
     mimetype: 'image/png'
+  }
+}
+```
+
+### `fallback`
+
+**webpack.config.js**
+```js
+{
+  loader: 'url-loader',
+  options: {
+    fallback: 'responsive-loader'
   }
 }
 ```
