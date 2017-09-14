@@ -31,9 +31,10 @@ module.exports = function(content) {
     return "module.exports = " + JSON.stringify("data:" + (mimetype ? mimetype + ";" : "") + "base64," + content.toString("base64"));
   }
 
-  var fileLoader = require("file-loader");
+  var fallback = options.fallback || "file-loader";
+  var fallbackLoader = require(fallback);
 
-  return fileLoader.call(this, content);
+  return fallbackLoader.call(this, content);
 }
 
 module.exports.raw = true;
