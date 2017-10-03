@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.6.0"></a>
+# [0.6.0](https://github.com/webpack-contrib/url-loader/compare/v0.5.9...v0.6.0) (2017-10-03)
+
+
+### Features
+
+* **index:** add options validation (`schema-utils`) ([#78](https://github.com/webpack-contrib/url-loader/issues/78)) ([ced5990](https://github.com/webpack-contrib/url-loader/commit/ced5990))
+* add `fallback` option ([#88](https://github.com/webpack-contrib/url-loader/issues/88)) ([636ebed](https://github.com/webpack-contrib/url-loader/commit/636ebed))
+
+
+
 <a name="0.5.9"></a>
 ## [0.5.9](https://github.com/webpack/url-loader/compare/v0.5.8...v0.5.9) (2017-06-12)
 
