@@ -11,6 +11,11 @@ All notable changes to this project will be documented in this file. See [standa
 * **index:** add options validation (`schema-utils`) ([#78](https://github.com/webpack-contrib/url-loader/issues/78)) ([ced5990](https://github.com/webpack-contrib/url-loader/commit/ced5990))
 * add `fallback` option ([#88](https://github.com/webpack-contrib/url-loader/issues/88)) ([636ebed](https://github.com/webpack-contrib/url-loader/commit/636ebed))
 
+### Security
+
+* Updates Mime pacakge due to Regex DOS security vulnerability ([#87](https://github.com/webpack-contrib/url-loader/issues/87)) ([d19ee2d](https://github.com/webpack-contrib/url-loader/commit/d19ee2d))
+
+ - Reference issue https://nodesecurity.io/advisories/535
 
 
 <a name="0.5.9"></a>
