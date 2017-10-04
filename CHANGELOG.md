@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.6.2"></a>
+## [0.6.2](https://github.com/webpack-contrib/url-loader/compare/v0.6.1...v0.6.2) (2017-10-04)
+
+
+### Bug Fixes
+
+* allow use `limit` as string ([#96](https://github.com/webpack-contrib/url-loader/issues/96)) ([b31684d](https://github.com/webpack-contrib/url-loader/commit/b31684d))
+
+
+
 <a name="0.6.1"></a>
 ## [0.6.1](https://github.com/webpack-contrib/url-loader/compare/v0.6.0...v0.6.1) (2017-10-04)
 
