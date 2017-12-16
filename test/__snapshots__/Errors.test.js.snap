@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Errors Validation Error 1`] = `
+"URL Loader Invalid Options
+
+options.limit should be string,number
+"
+`;
