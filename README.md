@@ -54,9 +54,9 @@ module.exports = {
 
 |Name|Type|Default|Description|
 |:--:|:--:|:-----:|:----------|
-|**`limit`**|`{Number}`|`undefined`|Byte limit to inline files as Data URL|
-|**`mimetype`**|`{String}`|`extname`|Specify MIME type for the file (Otherwise it's inferred from the file extension)|
-|**`fallback`**|`{String}`|`file-loader`|Specify `loader` for the file when file is greater than the limit (in bytes)|
+|**[`limit`](#limit)**|`{Number}`|`undefined`|Byte limit to inline files as Data URL|
+|**[`mimetype`](#mimetype)**|`{String}`|`extname`|Specify MIME type for the file (Otherwise it's inferred from the file extension)|
+|**[`fallback`](#fallback)**|`{String}`|`file-loader`|Specify `loader` for the file when file is greater than the limit (in bytes)|
 
 ### `limit`
 

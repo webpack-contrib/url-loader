@@ -2,15 +2,12 @@
   "type": "object",
   "properties": {
     "limit": {
-      "type": ["number", "string"]
-    },
-    "prefix": {
-      "type": "string"
+      "type": ["string", "number"]
     },
     "mimetype": {
       "type": "string"
     },
-    "encoding": {
+    "fallback": {
       "type": "string"
     }
   },
