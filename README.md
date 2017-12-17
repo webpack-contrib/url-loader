@@ -155,8 +155,8 @@ Set the MIME type for the file. If unspecified the file extensions will be used 
 [deps]: https://david-dm.org/webpack-contrib/url-loader.svg
 [deps-url]: https://david-dm.org/webpack-contrib/url-loader
 
-[tests]: http://img.shields.io/travis/webpack-contrib/url-loader.svg
-[tests-url]: https://travis-ci.org/webpack-contrib/url-loader
+[tests]: https://circleci.com/gh/webpack-contrib/url-loader/tree/master.svg?style=svg
+[tests-url]: https://circleci.com/gh/webpack-contrib/url-loader/tree/master
 
 [cover]: https://coveralls.io/repos/github/webpack-contrib/url-loader/badge.svg
 [cover-url]: https://coveralls.io/github/webpack-contrib/url-loader
