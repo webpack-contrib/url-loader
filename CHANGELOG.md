@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-beta.0"></a>
+# [1.0.0-beta.0](https://github.com/webpack-contrib/url-loader/compare/v0.6.2...v1.0.0-beta.0) (2017-12-17)
+
+
+### Code Refactoring
+
+* apply `webpack-defaults` ([#102](https://github.com/webpack-contrib/url-loader/issues/102)) ([073b588](https://github.com/webpack-contrib/url-loader/commit/073b588))
+
+
+### BREAKING CHANGES
+
+* Sets `engines` to `"node": ">= 6.9.0 || >= 8.9.0"`
+* Drops support for `webpack =< v2.0.0`
+
+
+
 <a name="0.6.2"></a>
 ## [0.6.2](https://github.com/webpack-contrib/url-loader/compare/v0.6.1...v0.6.2) (2017-10-04)
 
