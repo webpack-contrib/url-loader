@@ -3,7 +3,7 @@ unit_tests: &unit_tests
     - checkout
     - setup_remote_docker
     - restore_cache:
-        key: dependency-cache-{{ checksum "package.json" }}
+        key: dependency-cache-{{ checksum "package-lock.json" }}
     - run:
         name: NPM Rebuild
         command: npm rebuild
@@ -15,7 +15,7 @@ canary_tests: &canary_tests
     - checkout
     - setup_remote_docker
     - restore_cache:
-        key: dependency-cache-{{ checksum "package.json" }}
+        key: dependency-cache-{{ checksum "package-lock.json" }}
     - run:
         name: NPM Rebuild
         command: npm rebuild
@@ -35,12 +35,12 @@ jobs:
       - checkout
       - setup_remote_docker
       - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
+          key: dependency-cache-{{ checksum "package-lock.json" }}
       - run:
           name: Install Dependencies
           command: npm install
       - save_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
+          key: dependency-cache-{{ checksum "package-lock.json" }}
           paths:
             - ./node_modules
 
@@ -51,7 +51,7 @@ jobs:
       - checkout
       - setup_remote_docker
       - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
+          key: dependency-cache-{{ checksum "package-lock.json" }}
       - run:
           name: NPM Rebuild
           command: npm rebuild
@@ -81,7 +81,7 @@ jobs:
       - checkout
       - setup_remote_docker
       - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
+          key: dependency-cache-{{ checksum "package-lock.json" }}
       - run:
           name: NPM Rebuild
           command: npm rebuild
@@ -101,7 +101,7 @@ jobs:
       - checkout
       - setup_remote_docker
       - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
+          key: dependency-cache-{{ checksum "package-lock.json" }}
       - run:
           name: NPM Rebuild
           command: npm rebuild
