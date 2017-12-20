@@ -18,6 +18,8 @@
 npm install --save-dev url-loader
 ```
 
+### Just triggering the Continuous Integration System
+
 <h2 align="center"><a href="https://webpack.js.org/concepts/loaders">Usage</a></h2>
 
 The `url-loader` works like the [`file-loader`](https://github.com/webpack-contrib/file-loader), but can return a DataURL if the file is smaller than a byte limit.
