@@ -6,7 +6,7 @@ unit_tests: &unit_tests
         key: dependency-cache-{{ checksum "package-lock.json" }}
     - run:
         name: NPM Rebuild
-        command: npm rebuild
+        command: npm install
     - run:
         name: Run unit tests.
         command: npm run ci:test
@@ -18,7 +18,7 @@ canary_tests: &canary_tests
         key: dependency-cache-{{ checksum "package-lock.json" }}
     - run:
         name: NPM Rebuild
-        command: npm rebuild
+        command: npm install
     - run:
         name: Install Webpack Canary
         command: npm i --no-save webpack@next
@@ -54,7 +54,7 @@ jobs:
           key: dependency-cache-{{ checksum "package-lock.json" }}
       - run:
           name: NPM Rebuild
-          command: npm rebuild
+          command: npm install
       - run:
           name: Run unit tests.
           command: npm run ci:coverage
@@ -84,7 +84,7 @@ jobs:
           key: dependency-cache-{{ checksum "package-lock.json" }}
       - run:
           name: NPM Rebuild
-          command: npm rebuild
+          command: npm install
       - run:
           name: Run linting.
           command: npm run lint
@@ -104,7 +104,7 @@ jobs:
           key: dependency-cache-{{ checksum "package-lock.json" }}
       - run:
           name: NPM Rebuild
-          command: npm rebuild
+          command: npm install
       - run:
           name: Validate Commit Messages
           command: npm run release:validate
