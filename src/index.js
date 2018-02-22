@@ -31,7 +31,7 @@ export default function loader(src) {
   // No limit or within the specified limit
   if (!limit || src.length < limit) {
     if (typeof src === 'string') {
-      src = new Buffer(src);
+      src = Buffer.from(src);
     }
 
     return `export default ${JSON.stringify(
