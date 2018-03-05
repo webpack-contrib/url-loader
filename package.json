@@ -1,6 +1,6 @@
 {
   "name": "url-loader",
-  "version": "1.0.0-beta.0",
+  "version": "1.0.1",
   "author": "Tobias Koppers @sokra",
   "description": "URL Loader for webpack",
   "license": "MIT",
@@ -18,7 +18,7 @@
     "ci:lint:commits": "commitlint --from=${CIRCLE_BRANCH} --to=${CIRCLE_SHA1}",
     "lint-staged": "lint-staged",
     "prebuild": "npm run clean",
-    "prepublish": "npm run build",
+    "prepare": "npm run build",
     "release": "standard-version",
     "release:ci": "conventional-github-releaser -p angular",
     "release:validate": "commitlint --from=$(git describe --tags --abbrev=0) --to=$(git rev-parse HEAD)",
@@ -40,6 +40,7 @@
     "@commitlint/cli": "^5.2.5",
     "@commitlint/config-angular": "^5.1.1",
     "@webpack-contrib/eslint-config-webpack": "^2.0.2",
+    "@webpack-contrib/test-utils": "^0.1.2",
     "babel-cli": "^6.26.0",
     "babel-jest": "^22.0.3",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
@@ -61,8 +62,8 @@
     "pre-commit": "^1.2.2",
     "prettier": "^1.9.2",
     "standard-version": "^4.2.0",
-    "webpack": "^3.10.0",
-    "webpack-defaults": "^2.0.0-rc.1"
+    "webpack": "^4.0.0",
+    "webpack-defaults": "^2.0.0-rc.2"
   },
   "engines": {
     "node": ">= 6.9.0 || >= 8.9.0"
