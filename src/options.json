@@ -8,7 +8,32 @@
       "type": "string"
     },
     "fallback": {
-      "type": "string"
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "loader": {
+              "description": "Fallback loader name",
+              "type": "string"
+            },
+            "options": {
+              "description": "Fallback loader options",
+              "anyOf": [
+                {
+                  "type": "object"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "type": "object"
+        }
+      ]
     }
   },
   "additionalProperties": true
