@@ -101,6 +101,20 @@ Set the MIME type for the file. If unspecified the file extensions will be used 
 }
 ```
 
+The fallback loader will recieve the same configuration options as the url-loader.
+
+Example: To set the quality option of the responsive-loader above use:
+
+```js
+{
+  loader: 'url-loader',
+  options: {
+    fallback: 'responsive-loader',
+    quality: 85
+  }
+}
+```
+
 <h2 align="center">Maintainers</h2>
 
 <table>
