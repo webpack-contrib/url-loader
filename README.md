@@ -1,36 +1,43 @@
+<div align="center">
+  <a href="https://github.com/webpack/webpack">
+    <img width="200" height="200" src="https://webpack.js.org/assets/icon-square-big.svg">
+  </a>
+</div>
+
 [![npm][npm]][npm-url]
 [![node][node]][node-url]
 [![deps][deps]][deps-url]
 [![tests][tests]][tests-url]
-[![coverage][cover]][cover-url]
 [![chat][chat]][chat-url]
+[![size][size]][size-url]
 
-<div align="center">
-  <a href="https://github.com/webpack/webpack">
-    <img width="200" height="200"
-      src="https://cdn.rawgit.com/webpack/media/e7485eb2/logo/icon.svg">
-  </a>
-  <h1>URL Loader</h1>
-  <p>Loads files as `base64` encoded URL</p>
-</div>
+# url-loader
 
-<h2 align="center">Install</h2>
+A loader for webpack which transforms files into base64 URIs.
 
-```bash
-npm install --save-dev url-loader
+## Requirements
+
+This module requires a minimum of Node v6.9.0 and Webpack v4.0.0.
+
+## Getting Started
+
+To begin, you'll need to install `url-loader`:
+
+```console
+$ npm install url-loader --save-dev
 ```
 
-<h2 align="center"><a href="https://webpack.js.org/concepts/loaders">Usage</a></h2>
-
-The `url-loader` works like the [`file-loader`](https://github.com/webpack-contrib/file-loader), but can return a DataURL if the file is smaller than a byte limit.
+`url-loader` works like
+[`file-loader`](https://github.com/webpack-contrib/file-loader), but can return
+a DataURL if the file is smaller than a byte limit.
 
 
 ```js
 import img from './image.png'
 ```
 
-**webpack.config.js**
 ```js
+// webpack.config.js
 module.exports = {
   module: {
     rules: [
@@ -50,49 +57,20 @@ module.exports = {
 }
 ```
 
-<h2 align="center">Options</h2>
+And run `webpack` via your preferred method.
 
-|Name|Type|Default|Description|
-|:--:|:--:|:-----:|:----------|
-|**[`limit`](#limit)**|`{Number}`|`undefined`|Byte limit to inline files as Data URL|
-|**[`mimetype`](#mimetype)**|`{String}`|`extname`|Specify MIME type for the file (Otherwise it's inferred from the file extension)|
-|**[`fallback`](#fallback)**|`{String}`|`file-loader`|Specify `loader` for the file when file is greater than the limit (in bytes)|
-
-### `limit`
-
-If the file is greater than the limit (in bytes) the [`file-loader`](https://github.com/webpack-contrib/file-loader) is used by default and all query parameters are passed to it.
-You can use other loader using `fallback` option.
-
-The limit can be specified via loader options and defaults to no limit.
-
-**webpack.config.js**
-```js
-{
-  loader: 'url-loader',
-  options: {
-    limit: 8192
-  }
-}
-```
-
-### `mimetype`
-
-Set the MIME type for the file. If unspecified the file extensions will be used to lookup the MIME type.
-
-**webpack.config.js**
-```js
-{
-  loader: 'url-loader',
-  options: {
-    mimetype: 'image/png'
-  }
-}
-```
+## Options
 
 ### `fallback`
 
-**webpack.config.js**
+Type: `String`
+Default: `'file-loader'`
+
+Specifies an alternative loader to use when a target file's size exceeds the
+limit set in the `limit` option.
+
 ```js
+// webpack.config.js
 {
   loader: 'url-loader',
   options: {
@@ -101,9 +79,9 @@ Set the MIME type for the file. If unspecified the file extensions will be used 
 }
 ```
 
-The fallback loader will recieve the same configuration options as the url-loader.
+The fallback loader will receive the same configuration options as url-loader.
 
-Example: To set the quality option of the responsive-loader above use:
+For example, to set the quality option of a responsive-loader above use:
 
 ```js
 {
@@ -115,50 +93,56 @@ Example: To set the quality option of the responsive-loader above use:
 }
 ```
 
-<h2 align="center">Maintainers</h2>
+### `limit`
 
-<table>
-  <tbody>
-    <tr>
-      <td align="center">
-        <a href="https://github.com/bebraw">
-          <img width="150" height="150" src="https://github.com/bebraw.png?v=3&s=150">
-          </br>
-          Juho Vepsäläinen
-        </a>
-      </td>
-      <td align="center">
-        <a href="https://github.com/d3viant0ne">
-          <img width="150" height="150" src="https://github.com/d3viant0ne.png?v=3&s=150">
-          </br>
-          Joshua Wiens
-        </a>
-      </td>
-      <td align="center">
-        <a href="https://github.com/sapegin">
-          <img width="150" height="150" src="https://github.com/sapegin.png?v=3&s=150">
-          </br>
-          Artem Sapegin
-        </a>
-      </td>
-      <td align="center">
-        <a href="https://github.com/michael-ciniawsky">
-          <img width="150" height="150" src="https://github.com/michael-ciniawsky.png?v=3&s=150">
-          </br>
-          Michael Ciniawsky
-        </a>
-      </td>
-      <td align="center">
-        <a href="https://github.com/evilebottnawi">
-          <img width="150" height="150" src="https://github.com/evilebottnawi.png?v=3&s=150">
-          </br>
-          Alexander Krasnoyarov
-        </a>
-      </td>
-    </tr>
-  <tbody>
-</table>
+Type: `Number`
+Default: `undefined`
 
+A `Number` specifying the maximum size of a file in bytes. If the file is
+greater than the limit,
+[`file-loader`](https://github.com/webpack-contrib/file-loader) is used by
+default and all query parameters are passed to it. Using an alternative to
+`file-loader` is enabled via the `fallback` option.
+
+The limit can be specified via loader options and defaults to no limit.
+
+```js
+// webpack.config.js
+{
+  loader: 'url-loader',
+  options: {
+    limit: 8192
+  }
+}
+```
+
+### `mimetype`
+
+Type: `String`
+Default: `(file extension)`
+
+Sets the MIME type for the file to be transformed. If unspecified the file
+extensions will be used to lookup the MIME type.
+
+```js
+// webpack.config.js
+{
+  loader: 'url-loader',
+  options: {
+    mimetype: 'image/png'
+  }
+}
+```
+
+## Contributing
+
+Please take a moment to read our contributing guidelines if you haven't yet done so.
+
+#### [CONTRIBUTING](./.github/CONTRIBUTING.md)
+
+## License
+
+#### [MIT](./LICENSE)
 
 [npm]: https://img.shields.io/npm/v/url-loader.svg
 [npm-url]: https://npmjs.com/package/url-loader
@@ -169,11 +153,14 @@ Example: To set the quality option of the responsive-loader above use:
 [deps]: https://david-dm.org/webpack-contrib/url-loader.svg
 [deps-url]: https://david-dm.org/webpack-contrib/url-loader
 
-[tests]: https://circleci.com/gh/webpack-contrib/url-loader/tree/master.svg?style=svg
-[tests-url]: https://circleci.com/gh/webpack-contrib/url-loader/tree/master
+[tests]: 	https://img.shields.io/circleci/project/github/webpack-contrib/url-loader.svg
+[tests-url]: https://circleci.com/gh/webpack-contrib/url-loader
 
 [cover]: https://codecov.io/gh/webpack-contrib/url-loader/branch/master/graph/badge.svg
 [cover-url]: https://codecov.io/gh/webpack-contrib/url-loader
 
-[chat]: https://badges.gitter.im/webpack/webpack.svg
+[chat]: https://img.shields.io/badge/gitter-webpack%2Fwebpack-brightgreen.svg
 [chat-url]: https://gitter.im/webpack/webpack
+
+[size]: https://packagephobia.now.sh/badge?p=url-loader
+[size-url]: https://packagephobia.now.sh/result?p=url-loader
