@@ -11,5 +11,5 @@ exports[`Errors Validation Error 1`] = `
   [2moptions[22m.limit  [34mshould be string,number[39m
     at validate (<PROJECT_ROOT>/node_modules/@webpack-contrib/schema-utils/dist/validate-options.js:87:15)
     at validator (<PROJECT_ROOT>/node_modules/@webpack-contrib/schema-utils/dist/validate-options.js:118:10)
-    at Object.loader (<PROJECT_ROOT>/src/index.js:22:84)"
+    at Object.loader (<PROJECT_ROOT>/src/index.js:19:3)"
 `;
