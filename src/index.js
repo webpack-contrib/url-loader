@@ -5,7 +5,7 @@
   import/no-dynamic-require,
 */
 import { getOptions } from 'loader-utils';
-import validateOptions from 'schema-utils';
+import validateOptions from '@webpack-contrib/schema-utils';
 import mime from 'mime';
 import schema from './options.json';
 
@@ -16,7 +16,7 @@ export default function loader(src) {
   // Loader Options
   const options = getOptions(this) || {};
 
-  validateOptions(schema, options, 'URL Loader');
+  validateOptions({ name: 'URL Loader', schema, target: options });
 
   const file = this.resourcePath;
   // Set limit for resource inlining (file size)

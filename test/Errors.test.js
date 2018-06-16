@@ -18,9 +18,8 @@ describe('Errors', () => {
     const { source } = stats.toJson().modules[0];
 
     // eslint-disable-next-line
-    const err = () => eval(source);
+    const fn = () => eval(source);
 
-    expect(err).toThrow();
-    expect(err).toThrowErrorMatchingSnapshot();
+    expect(fn).toThrowErrorMatchingSnapshot();
   });
 });

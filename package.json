@@ -1,13 +1,17 @@
 {
   "name": "url-loader",
   "version": "1.0.1",
-  "author": "Tobias Koppers @sokra",
-  "description": "URL Loader for webpack",
+  "description": "A loader for webpack which transforms files into base64 URIs",
   "license": "MIT",
+  "repository": "webpack-contrib/url-loader",
+  "author": "Tobias Koppers @sokra",
+  "homepage": "https://github.com/webpack-contrib/url-loader",
+  "bugs": "https://github.com/webpack-contrib/url-loader/issues",
+  "bin": "",
   "main": "dist/cjs.js",
-  "files": [
-    "dist"
-  ],
+  "engines": {
+    "node": ">= 6.9.0 < 7.0.0 || >= 8.9.0"
+  },
   "scripts": {
     "start": "npm run build -- -w",
     "build": "cross-env NODE_ENV=production babel src -d dist --ignore 'src/**/*.test.js' --copy-files",
@@ -18,7 +22,7 @@
     "ci:lint:commits": "commitlint --from=${CIRCLE_BRANCH} --to=${CIRCLE_SHA1}",
     "lint-staged": "lint-staged",
     "prebuild": "npm run clean",
-    "prepare": "npm run build",
+    "prepublish": "npm run build",
     "release": "standard-version",
     "release:ci": "conventional-github-releaser -p angular",
     "release:validate": "commitlint --from=$(git describe --tags --abbrev=0) --to=$(git rev-parse HEAD)",
@@ -31,14 +35,22 @@
     "ci:coverage": "npm run test:coverage -- --runInBand",
     "defaults": "webpack-defaults"
   },
+  "files": [
+    "dist"
+  ],
+  "peerDependencies": {
+    "webpack": "^4.0.0"
+  },
   "dependencies": {
+    "@webpack-contrib/schema-utils": "^1.0.0-beta.0",
     "loader-utils": "^1.1.0",
-    "mime": "^2.0.3",
-    "schema-utils": "^0.4.3"
+    "mime": "^2.0.3"
   },
   "devDependencies": {
     "@commitlint/cli": "^5.2.5",
     "@commitlint/config-angular": "^5.1.1",
+    "@commitlint/config-conventional": "^7.0.1",
+    "@webpack-contrib/defaults": "^2.4.0",
     "@webpack-contrib/eslint-config-webpack": "^2.0.2",
     "@webpack-contrib/test-utils": "^0.1.2",
     "babel-cli": "^6.26.0",
@@ -56,24 +68,24 @@
     "file-loader": "^1.1.6",
     "husky": "^0.14.3",
     "jest": "^22.0.3",
+    "jest-serializer-path": "^0.1.15",
     "lint-staged": "^6.0.0",
     "memory-fs": "^0.4.1",
     "nsp": "^3.1.0",
     "pre-commit": "^1.2.2",
     "prettier": "^1.9.2",
     "standard-version": "^4.2.0",
-    "webpack": "^4.0.0",
-    "webpack-defaults": "^2.0.0-rc.2"
+    "webpack": "^4.0.0"
   },
-  "engines": {
-    "node": ">= 6.9.0 || >= 8.9.0"
+  "keywords": [
+    "webpack"
+  ],
+  "jest": {
+    "snapshotSerializers": [
+      "jest-serializer-path"
+    ],
+    "testEnvironment": "node"
   },
-  "peerDependencies": {
-    "webpack": "^3.0.0 || ^4.0.0"
-  },
-  "homepage": "https://github.com/webpack-contrib/url-loader",
-  "repository": "https://github.com/webpack-contrib/url-loader",
-  "bugs": "https://github.com/webpack-contrib/url-loader/issues",
   "pre-commit": "lint-staged",
   "lint-staged": {
     "*.js": [
