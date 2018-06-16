@@ -7,6 +7,7 @@
 import { getOptions } from 'loader-utils';
 import validateOptions from '@webpack-contrib/schema-utils';
 import mime from 'mime';
+import normalizeFallback from './utils/normalizeFallback';
 import schema from './options.json';
 
 // Loader Mode
@@ -39,7 +40,23 @@ export default function loader(src) {
     )}`;
   }
 
-  const fallback = require(options.fallback ? options.fallback : 'file-loader');
+  // Normalize the fallback.
+  const { loader: fallbackLoader, query: fallbackQuery } = normalizeFallback(
+    options.fallback,
+    options
+  );
 
-  return fallback.call(this, src);
+  // Require the fallback.
+  const fallback = require(fallbackLoader);
+
+  // Call the fallback, passing a copy of the loader context. The copy has the query replaced. This way, the fallback
+  // loader receives the query which was intended for it instead of the query which was intended for url-loader.
+  const fallbackLoaderContext = Object.assign({}, this, {
+    query: fallbackQuery,
+  });
+  // Delete "options". "options" was deprecated in webpack 3, and removed in webpack 4. When support for webpack 3 is
+  // dropped, we can safely assume the fallback loader won't look at "options" and remove this line.
+  delete fallbackLoaderContext.options;
+
+  return fallback.call(fallbackLoaderContext, src);
 }

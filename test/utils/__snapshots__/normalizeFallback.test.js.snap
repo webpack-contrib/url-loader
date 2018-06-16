@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`normalizeFallback object 1`] = `
+Object {
+  "loader": "file-loader",
+  "query": undefined,
+}
+`;
+
+exports[`normalizeFallback object-with-options 1`] = `
+Object {
+  "loader": "file-loader",
+  "query": Object {
+    "name": "name-for-file-loader.[ext]",
+  },
+}
+`;
+
+exports[`normalizeFallback string 1`] = `
+Object {
+  "loader": "file-loader",
+  "query": Object {
+    "limit": 8192,
+    "name": "name-for-url-loader.[ext]",
+  },
+}
+`;
+
+exports[`normalizeFallback string-with-query 1`] = `
+Object {
+  "loader": "file-loader",
+  "query": "?name=name-for-file-loader.[ext]",
+}
+`;
+
+exports[`normalizeFallback undefined 1`] = `
+Object {
+  "loader": "file-loader",
+}
+`;
