@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.1.0"></a>
+# [1.1.0](https://github.com/webpack-contrib/url-loader/compare/v1.0.1...v1.1.0) (2018-08-13)
+
+
+### Features
+
+* support fallback loader in options.fallback ([#123](https://github.com/webpack-contrib/url-loader/issues/123)) ([017adc7](https://github.com/webpack-contrib/url-loader/commit/017adc7)), closes [#118](https://github.com/webpack-contrib/url-loader/issues/118)
+
+
+
 <a name="1.0.1"></a>
 ## [1.0.1](https://github.com/webpack-contrib/url-loader/compare/v1.0.0...v1.0.1) (2018-03-03)
 
