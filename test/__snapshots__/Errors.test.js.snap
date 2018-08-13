@@ -1,15 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Errors Validation Error 1`] = `
-"Module build failed: URL Loader
+"Module build failed (from <PROJECT_ROOT>/src/index.js):
+ValidationError: URL Loader Invalid Options
 
-  [4mOptions Validation Error[24m
+options.limit should be string,number
 
-  [2moptions[22m.limit  [34mshould be string,number[39m
-
-
-  [2moptions[22m.limit  [34mshould be string,number[39m
-    at validate (<PROJECT_ROOT>/node_modules/@webpack-contrib/schema-utils/dist/validate-options.js:87:15)
-    at validator (<PROJECT_ROOT>/node_modules/@webpack-contrib/schema-utils/dist/validate-options.js:118:10)
-    at Object.loader (<PROJECT_ROOT>/src/index.js:20:3)"
+    at validateOptions (<PROJECT_ROOT>/node_modules/schema-utils/src/validateOptions.js:32:11)
+    at Object.loader (<PROJECT_ROOT>/src/index.js:21:3)"
 `;
