@@ -42,7 +42,7 @@
     "webpack": "^4.0.0"
   },
   "dependencies": {
-    "@webpack-contrib/schema-utils": "^1.0.0-beta.0",
+    "schema-utils": "1.0.0",
     "loader-utils": "^1.1.0",
     "mime": "^2.0.3"
   },
