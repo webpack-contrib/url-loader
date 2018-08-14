@@ -42,9 +42,9 @@
     "webpack": "^4.0.0"
   },
   "dependencies": {
-    "schema-utils": "1.0.0",
     "loader-utils": "^1.1.0",
-    "mime": "^2.0.3"
+    "mime": "^2.0.3",
+    "schema-utils": "^1.0.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^5.2.5",
