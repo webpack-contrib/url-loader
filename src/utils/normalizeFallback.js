@@ -7,12 +7,18 @@ function normalizeFallbackString(fallbackString, originalOptions) {
     };
   }
 
-  // To remain consistent with version 1.0.1, pass the options which were provided to url-loader to the fallback loader.
-  // Perhaps it would make sense to strip out ‒ or "consume" ‒ the options we know were meant for url-loader: limit and
-  // mimetype.
+  // To remain consistent with version 1.0.1, pass any other options which were provided to url-loader to the fallback loader.
+  const { fallback, limit, mimetype, ...otherOptions } = originalOptions;
+
+  if (Object.keys(otherOptions).length === 0) {
+    return {
+      loader: fallbackString,
+    };
+  }
+
   return {
     loader: fallbackString,
-    query: originalOptions,
+    query: otherOptions,
   };
 }
 
@@ -35,9 +41,7 @@ function normalizeFallbackObject(fallbackObject) {
 export default function normalizeFallback(fallback, originalOptions) {
   // If no fallback was provided, use file-loader.
   if (!fallback) {
-    return {
-      loader: 'file-loader',
-    };
+    return normalizeFallbackString('file-loader', originalOptions);
   }
 
   if (typeof fallback === 'string') {
