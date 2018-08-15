@@ -55,9 +55,6 @@ export default function loader(src) {
   const fallbackLoaderContext = Object.assign({}, this, {
     query: fallbackQuery,
   });
-  // Delete "options". "options" was deprecated in webpack 3, and removed in webpack 4. When support for webpack 3 is
-  // dropped, we can safely assume the fallback loader won't look at "options" and remove this line.
-  delete fallbackLoaderContext.options;
 
   return fallback.call(fallbackLoaderContext, src);
 }
