@@ -7,3 +7,5 @@ exports[`Options fallback {String} 2`] = `"module.exports = __webpack_public_pat
 exports[`Options fallback {String} 3`] = `"module.exports = __webpack_public_path__ + \\"name-for-file-loader.png\\";"`;
 
 exports[`Options fallback {String} 4`] = `"module.exports = __webpack_public_path__ + \\"name-for-file-loader.png\\";"`;
+
+exports[`Options fallback {undefined} 1`] = `"module.exports = __webpack_public_path__ + \\"name-for-url-loader.png\\";"`;

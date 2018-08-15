@@ -22,6 +22,23 @@ describe('Options', () => {
       expect(source).toMatchSnapshot();
     });
 
+    test('{undefined}', async () => {
+      const config = {
+        loader: {
+          test: /\.png$/,
+          options: {
+            limit: 100,
+            name: 'name-for-url-loader.[ext]',
+          },
+        },
+      };
+
+      const stats = await webpack('fixture.js', config);
+      const { source } = stats.toJson().modules[0];
+
+      expect(source).toMatchSnapshot();
+    });
+
     // Version 1.0.1 passes options provided to url-loader to the fallback as well, so make sure that still works.
     test('{String}', async () => {
       const config = {

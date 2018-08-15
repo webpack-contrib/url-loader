@@ -20,7 +20,6 @@ exports[`normalizeFallback string 1`] = `
 Object {
   "loader": "file-loader",
   "query": Object {
-    "limit": 8192,
     "name": "name-for-url-loader.[ext]",
   },
 }
@@ -36,5 +35,8 @@ Object {
 exports[`normalizeFallback undefined 1`] = `
 Object {
   "loader": "file-loader",
+  "query": Object {
+    "name": "name-for-url-loader.[ext]",
+  },
 }
 `;
