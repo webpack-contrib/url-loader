@@ -43,7 +43,7 @@ export default function loader(src) {
 
   // Normalize the fallback.
   const { loader: fallbackLoader, query: fallbackQuery } = normalizeFallback(
-    options.fallback,
+    options.fallback || 'file-loader',
     options
   );
 
