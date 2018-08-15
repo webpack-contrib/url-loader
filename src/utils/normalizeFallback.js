@@ -10,12 +10,6 @@ function normalizeFallbackString(fallbackString, originalOptions) {
   // To remain consistent with version 1.0.1, pass any other options which were provided to url-loader to the fallback loader.
   const { fallback, limit, mimetype, ...otherOptions } = originalOptions;
 
-  if (Object.keys(otherOptions).length === 0) {
-    return {
-      loader: fallbackString,
-    };
-  }
-
   return {
     loader: fallbackString,
     query: otherOptions,
