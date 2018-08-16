@@ -5,6 +5,7 @@ import normalizeFallback from '../../src/utils/normalizeFallback';
 
 describe('normalizeFallback', () => {
   test('undefined', () => {
+    // eslint-disable-next-line no-undefined
     const result = normalizeFallback(undefined, {
       limit: 8192,
       name: 'name-for-url-loader.[ext]',
