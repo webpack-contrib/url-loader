@@ -42,10 +42,10 @@ export default function loader(src) {
   }
 
   // Normalize the fallback.
-  const { loader: fallbackLoader, query: fallbackQuery } = normalizeFallback(
-    options.fallback,
-    options
-  );
+  const {
+    loader: fallbackLoader,
+    options: fallbackOptions,
+  } = normalizeFallback(options.fallback, options);
 
   // Require the fallback.
   const fallback = require(fallbackLoader);
@@ -53,7 +53,7 @@ export default function loader(src) {
   // Call the fallback, passing a copy of the loader context. The copy has the query replaced. This way, the fallback
   // loader receives the query which was intended for it instead of the query which was intended for url-loader.
   const fallbackLoaderContext = Object.assign({}, this, {
-    query: fallbackQuery,
+    query: fallbackOptions,
   });
 
   return fallback.call(fallbackLoaderContext, src);

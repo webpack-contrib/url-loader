@@ -3,14 +3,18 @@
 exports[`normalizeFallback object 1`] = `
 Object {
   "loader": "file-loader",
-  "query": undefined,
+  "options": Object {
+    "limit": 8192,
+    "name": "name-for-url-loader.[ext]",
+  },
 }
 `;
 
 exports[`normalizeFallback object-with-options 1`] = `
 Object {
   "loader": "file-loader",
-  "query": Object {
+  "options": Object {
+    "limit": 8192,
     "name": "name-for-file-loader.[ext]",
   },
 }
@@ -19,7 +23,8 @@ Object {
 exports[`normalizeFallback string 1`] = `
 Object {
   "loader": "file-loader",
-  "query": Object {
+  "options": Object {
+    "limit": 8192,
     "name": "name-for-url-loader.[ext]",
   },
 }
@@ -28,14 +33,18 @@ Object {
 exports[`normalizeFallback string-with-query 1`] = `
 Object {
   "loader": "file-loader",
-  "query": "?name=name-for-file-loader.[ext]",
+  "options": Object {
+    "limit": 8192,
+    "name": "name-for-file-loader.[ext]",
+  },
 }
 `;
 
 exports[`normalizeFallback undefined 1`] = `
 Object {
   "loader": "file-loader",
-  "query": Object {
+  "options": Object {
+    "limit": 8192,
     "name": "name-for-url-loader.[ext]",
   },
 }
