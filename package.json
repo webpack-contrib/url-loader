@@ -10,7 +10,7 @@
   "bin": "",
   "main": "dist/cjs.js",
   "engines": {
-    "node": ">= 6.9.0 < 7.0.0 || >= 8.9.0"
+    "node": ">= 6"
   },
   "scripts": {
     "start": "npm run build -- -w",
