@@ -138,11 +138,11 @@ extensions will be used to lookup the MIME type.
 
 Please take a moment to read our contributing guidelines if you haven't yet done so.
 
-#### [CONTRIBUTING](./.github/CONTRIBUTING.md)
+[CONTRIBUTING](./.github/CONTRIBUTING.md)
 
 ## License
 
-#### [MIT](./LICENSE)
+[MIT](./LICENSE)
 
 [npm]: https://img.shields.io/npm/v/url-loader.svg
 [npm-url]: https://npmjs.com/package/url-loader
