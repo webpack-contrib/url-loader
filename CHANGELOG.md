@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.1.2"></a>
+## [1.1.2](https://github.com/webpack-contrib/url-loader/compare/v1.1.0...v1.1.2) (2018-10-10)
+
+
+### Bug Fixes
+
+* fallback options behaviour ([#145](https://github.com/webpack-contrib/url-loader/issues/145)) ([03e631f](https://github.com/webpack-contrib/url-loader/commit/03e631f))
+* **package:** add support for `webpack =< v3.0.0` (`peerDependencies`) ([#150](https://github.com/webpack-contrib/url-loader/issues/150)) ([a6860fc](https://github.com/webpack-contrib/url-loader/commit/a6860fc))
+* **package:** relax `node` version range (`engines`) ([#155](https://github.com/webpack-contrib/url-loader/issues/155)) ([d37b108](https://github.com/webpack-contrib/url-loader/commit/d37b108))
+* **utils/normalizeFallback:** correctly pass all `options` to the default fallback (`file-loader`) ([#139](https://github.com/webpack-contrib/url-loader/issues/139)) ([401be63](https://github.com/webpack-contrib/url-loader/commit/401be63))
+
+
+
 <a name="1.1.1"></a>
 ## [1.1.1](https://github.com/webpack-contrib/url-loader/compare/v1.1.0...v1.1.1) (2018-08-17)
 
