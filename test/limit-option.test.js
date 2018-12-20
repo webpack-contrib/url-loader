@@ -1,10 +1,7 @@
-/* eslint-disable
-  prefer-destructuring,
-*/
-import webpack from '@webpack-contrib/test-utils';
+import webpack from './helpers/compiler';
 
 describe('limit option', () => {
-  test('{undefined}', async () => {
+  it('{undefined}', async () => {
     const config = {
       loader: {
         test: /\.png$/,
@@ -13,12 +10,12 @@ describe('limit option', () => {
     };
 
     const stats = await webpack('fixture.js', config);
-    const { source } = stats.toJson().modules[0];
+    const [{ source }] = stats.toJson().modules;
 
     expect(source).toMatchSnapshot();
   });
 
-  test('{Number} (big)', async () => {
+  it('{Number} (big)', async () => {
     const config = {
       loader: {
         test: /\.png$/,
@@ -29,12 +26,12 @@ describe('limit option', () => {
     };
 
     const stats = await webpack('fixture.js', config);
-    const { source } = stats.toJson().modules[0];
+    const [{ source }] = stats.toJson().modules;
 
     expect(source).toMatchSnapshot();
   });
 
-  test('{Number} (less)', async () => {
+  it('{Number} (less)', async () => {
     const config = {
       loader: {
         test: /\.png$/,
@@ -45,12 +42,12 @@ describe('limit option', () => {
     };
 
     const stats = await webpack('fixture.js', config);
-    const { source } = stats.toJson().modules[0];
+    const [{ source }] = stats.toJson().modules;
 
     expect(source).toMatchSnapshot();
   });
 
-  test('{String} (big)', async () => {
+  it('{String} (big)', async () => {
     const config = {
       loader: {
         test: /\.png$/,
@@ -61,7 +58,7 @@ describe('limit option', () => {
     };
 
     const stats = await webpack('fixture.js', config);
-    const { source } = stats.toJson().modules[0];
+    const [{ source }] = stats.toJson().modules;
 
     expect(source).toMatchSnapshot();
   });

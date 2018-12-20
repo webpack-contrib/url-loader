@@ -1,12 +1,9 @@
-/* eslint-disable
-  prefer-destructuring,
-*/
 import path from 'path';
 
-import webpack from '@webpack-contrib/test-utils';
+import webpack from './helpers/compiler';
 
 describe('fallback option', () => {
-  test('{undefined}', async () => {
+  it('{undefined}', async () => {
     const config = {
       rules: [
         {
@@ -20,12 +17,12 @@ describe('fallback option', () => {
     };
 
     const stats = await webpack('fixture.js', config);
-    const { source } = stats.toJson().modules[0];
+    const [{ source }] = stats.toJson().modules;
 
     expect(source).toMatchSnapshot();
   });
 
-  test('{String}', async () => {
+  it('{String}', async () => {
     const config = {
       rules: [
         {
@@ -44,12 +41,12 @@ describe('fallback option', () => {
     };
 
     const stats = await webpack('fixture.js', config);
-    const { source } = stats.toJson().modules[0];
+    const [{ source }] = stats.toJson().modules;
 
     expect(source).toMatchSnapshot();
   });
 
-  test('{String} (with query)', async () => {
+  it('{String} (with query)', async () => {
     const config = {
       rules: [
         {
@@ -71,12 +68,12 @@ describe('fallback option', () => {
     };
 
     const stats = await webpack('fixture.js', config);
-    const { source } = stats.toJson().modules[0];
+    const [{ source }] = stats.toJson().modules;
 
     expect(source).toMatchSnapshot();
   });
 
-  test('{Object}', async () => {
+  it('{Object}', async () => {
     const config = {
       rules: [
         {
@@ -101,7 +98,7 @@ describe('fallback option', () => {
     };
 
     const stats = await webpack('fixture.js', config);
-    const { source } = stats.toJson().modules[0];
+    const [{ source }] = stats.toJson().modules;
 
     expect(source).toMatchSnapshot();
   });
