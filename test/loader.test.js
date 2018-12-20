@@ -1,10 +1,7 @@
-/* eslint-disable
-  prefer-destructuring,
-*/
-import webpack from '@webpack-contrib/test-utils';
+import webpack from './helpers/compiler';
 
 describe('Loader', () => {
-  test('Defaults', async () => {
+  it('should works', async () => {
     const config = {
       loader: {
         test: /\.png$/,
@@ -13,7 +10,7 @@ describe('Loader', () => {
     };
 
     const stats = await webpack('fixture.js', config);
-    const { source } = stats.toJson().modules[0];
+    const [{ source }] = stats.toJson().modules;
 
     expect(source).toMatchSnapshot();
   });

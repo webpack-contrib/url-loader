@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`validation 1`] = `
+"URL Loader Invalid Options
+
+options.limit should be string,number
+"
+`;
+
+exports[`validation 2`] = `
+"URL Loader Invalid Options
+
+options.mimetype should be string
+"
+`;
+
+exports[`validation 3`] = `
+"URL Loader Invalid Options
+
+options.fallback should be string
+options.fallback should be object
+options.fallback should match some schema in anyOf
+"
+`;
