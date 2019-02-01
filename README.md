@@ -114,10 +114,12 @@ The limit can be specified via loader options and defaults to no limit.
 
 ### `mimetype`
 
-Type: `String`
+Type: `String|Function`
 Default: `(file extension)`
 
-Sets the MIME type for the file to be transformed. If unspecified the file
+Sets the MIME type for the file to be transformed. If a function is provided, 
+it'll get pass the resource file path so that you can decide the correct mimetype
+dynamically. If unspecified, or the function return falsy value, the file
 extensions will be used to lookup the MIME type.
 
 ```js
@@ -125,7 +127,13 @@ extensions will be used to lookup the MIME type.
 {
   loader: 'url-loader',
   options: {
-    mimetype: 'image/png'
+    mimetype: 'image/png',
+    // or
+    mimetype: (file) => {
+      if (file.endsWith('.png') {
+        return 'image/png';
+      }
+    }
   }
 }
 ```
