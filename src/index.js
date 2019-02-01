@@ -28,7 +28,13 @@ export default function loader(src) {
     limit = parseInt(limit, 10);
   }
   // Get MIME type
-  const mimetype = options.mimetype || mime.getType(file);
+  let mimetype;
+  if (options.mimetype && typeof options.mimetype === 'string') {
+    mimetype = options.mimetype;
+  } else if (typeof options.mimetype === 'function') {
+    mimetype = options.mimetype(file);
+  }
+  if (!mimetype) mimetype = mime.getType(file);
 
   // No limit or within the specified limit
   if (!limit || src.length < limit) {
