@@ -36,6 +36,7 @@ const output = (config) => {
 };
 
 export default function(fixture, config, options) {
+  // eslint-disable-next-line no-param-reassign
   config = {
     mode: 'development',
     devtool: config.devtool || 'sourcemap',
@@ -46,6 +47,7 @@ export default function(fixture, config, options) {
     plugins: plugins(config),
   };
 
+  // eslint-disable-next-line no-param-reassign
   options = Object.assign({ output: false }, options);
 
   if (options.output) {
