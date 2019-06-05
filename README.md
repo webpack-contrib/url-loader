@@ -91,15 +91,17 @@ For example, to set the quality option of a responsive-loader above use:
 
 ### `limit`
 
-Type: `Number`
+Type: `Number|Boolean`
 Default: `undefined`
+
+The limit can be specified via loader options and defaults to no limit.
+
+#### `Number`
 
 A `Number` specifying the maximum size of a file in bytes. If the file size is
 **equal** or **greater** than the limit [`file-loader`](https://github.com/webpack-contrib/file-loader) 
 will be used (by default) and all query parameters are passed to it. 
 Using an alternative to `file-loader` is enabled via the `fallback` option.
-
-The limit can be specified via loader options and defaults to no limit.
 
 ```js
 // webpack.config.js
@@ -107,6 +109,21 @@ The limit can be specified via loader options and defaults to no limit.
   loader: 'url-loader',
   options: {
     limit: 8192
+  }
+}
+```
+
+#### `Boolean`
+
+Enable or disable transform files into base64.
+
+```js
+// webpack.config.js
+{
+  loader: 'url-loader',
+  options: {
+    // Disable transformation to base64
+    limit: false
   }
 }
 ```

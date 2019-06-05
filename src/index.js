@@ -11,17 +11,26 @@ import mime from 'mime';
 import normalizeFallback from './utils/normalizeFallback';
 import schema from './options.json';
 
+function shouldTransform(limit, size) {
+  if (typeof limit === 'boolean') {
+    return limit;
+  }
+
+  if (typeof limit === 'number') {
+    return size <= parseInt(limit, 10);
+  }
+
+  return true;
+}
+
 export default function loader(src) {
   // Loader Options
   const options = getOptions(this) || {};
 
   validateOptions(schema, options, 'URL Loader');
 
-  // Set limit for resource inlining (file size)
-  const limit = options.limit ? parseInt(options.limit, 10) : options.limit;
-
   // No limit or within the specified limit
-  if ((!limit && typeof limit !== 'number') || src.length <= limit) {
+  if (shouldTransform(options.limit, src.length)) {
     const file = this.resourcePath;
     // Get MIME type
     const mimetype = options.mimetype || mime.getType(file);
