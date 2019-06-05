@@ -1,6 +1,29 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+## [2.0.0](https://github.com/webpack-contrib/url-loader/compare/v1.1.2...v2.0.0) (2019-06-05)
+
+
+### Bug Fixes
+
+* rm unnecessary `bin` field ([#163](https://github.com/webpack-contrib/url-loader/issues/163)) ([b603665](https://github.com/webpack-contrib/url-loader/commit/b603665))
+* `limit` should always be a number and 0 value handles as number ([#180](https://github.com/webpack-contrib/url-loader/issues/180)) ([d82e453](https://github.com/webpack-contrib/url-loader/commit/d82e453))
+* fallback loader will be used than limit is equal or greater ([#179](https://github.com/webpack-contrib/url-loader/issues/179)) ([3c24545](https://github.com/webpack-contrib/url-loader/commit/3c24545))
+
+
+### Features
+
+* limit option can be boolean ([#181](https://github.com/webpack-contrib/url-loader/issues/181)) ([60d2cb3](https://github.com/webpack-contrib/url-loader/commit/60d2cb3))
+
+
+### BREAKING CHANGES
+
+* minimum required nodejs version is `8.9.0`
+* `limit` should always be a number and 0 value handles as number
+* fallback loader will be used than limit is equal or greater (before only when greater)
+
+
 
 <a name="1.1.2"></a>
 ## [1.1.2](https://github.com/webpack-contrib/url-loader/compare/v1.1.0...v1.1.2) (2018-10-10)
