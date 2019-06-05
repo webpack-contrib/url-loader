@@ -3,18 +3,25 @@
 exports[`validation 1`] = `
 "URL Loader Invalid Options
 
-options.limit should be string,number
+options.limit should be number
 "
 `;
 
 exports[`validation 2`] = `
 "URL Loader Invalid Options
 
-options.mimetype should be string
+options.limit should be number
 "
 `;
 
 exports[`validation 3`] = `
+"URL Loader Invalid Options
+
+options.mimetype should be string
+"
+`;
+
+exports[`validation 4`] = `
 "URL Loader Invalid Options
 
 options.fallback should be string

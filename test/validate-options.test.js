@@ -17,8 +17,8 @@ it('validation', async () => {
   // The `fallback` loader can have any optsions so we use `additionalProperties: false` to avoid problems.
   expect(() => validate({ unknown: 'unknown' })).not.toThrow();
 
-  expect(() => validate({ limit: '8192' })).not.toThrow();
   expect(() => validate({ limit: 8192 })).not.toThrow();
+  expect(() => validate({ limit: '8192' })).toThrowErrorMatchingSnapshot();
   expect(() => validate({ limit: true })).toThrowErrorMatchingSnapshot();
 
   expect(() => validate({ mimetype: 'image/png' })).not.toThrow();
