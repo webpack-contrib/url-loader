@@ -11,27 +11,21 @@ import mime from 'mime';
 import normalizeFallback from './utils/normalizeFallback';
 import schema from './options.json';
 
-// Loader Mode
-export const raw = true;
-
 export default function loader(src) {
   // Loader Options
   const options = getOptions(this) || {};
 
   validateOptions(schema, options, 'URL Loader');
 
-  const file = this.resourcePath;
   // Set limit for resource inlining (file size)
-  let limit = options.limit;
-
-  if (limit) {
-    limit = parseInt(limit, 10);
-  }
-  // Get MIME type
-  const mimetype = options.mimetype || mime.getType(file);
+  const limit = options.limit ? parseInt(options.limit, 10) : options.limit;
 
   // No limit or within the specified limit
-  if (!limit || src.length <= limit) {
+  if ((!limit && typeof limit !== 'number') || src.length <= limit) {
+    const file = this.resourcePath;
+    // Get MIME type
+    const mimetype = options.mimetype || mime.getType(file);
+
     if (typeof src === 'string') {
       src = Buffer.from(src);
     }
@@ -58,3 +52,6 @@ export default function loader(src) {
 
   return fallback.call(fallbackLoaderContext, src);
 }
+
+// Loader Mode
+export const raw = true;

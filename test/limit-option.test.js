@@ -15,6 +15,40 @@ describe('limit option', () => {
     expect(source).toMatchSnapshot();
   });
 
+  it('{Number} (0)', async () => {
+    // Image size is 6777
+    const config = {
+      loader: {
+        test: /\.png$/,
+        options: {
+          limit: 0,
+        },
+      },
+    };
+
+    const stats = await webpack('fixture.js', config);
+    const [{ source }] = stats.toJson().modules;
+
+    expect(source).toMatchSnapshot();
+  });
+
+  it('{Number} (0.1)', async () => {
+    // Image size is 6777
+    const config = {
+      loader: {
+        test: /\.png$/,
+        options: {
+          limit: 0.1,
+        },
+      },
+    };
+
+    const stats = await webpack('fixture.js', config);
+    const [{ source }] = stats.toJson().modules;
+
+    expect(source).toMatchSnapshot();
+  });
+
   it('{Number} (6776)', async () => {
     // Image size is 6777
     const config = {
@@ -66,7 +100,7 @@ describe('limit option', () => {
     expect(source).toMatchSnapshot();
   });
 
-  it('{Number} (big)', async () => {
+  it('{Number} (Number.MAX_SAFE_INTEGER)', async () => {
     const config = {
       loader: {
         test: /\.png$/,
@@ -82,28 +116,12 @@ describe('limit option', () => {
     expect(source).toMatchSnapshot();
   });
 
-  it('{Number} (less)', async () => {
+  it('{Number} (Number.MIN_SAFE_INTEGER)', async () => {
     const config = {
       loader: {
         test: /\.png$/,
         options: {
           limit: Number.MIN_SAFE_INTEGER,
-        },
-      },
-    };
-
-    const stats = await webpack('fixture.js', config);
-    const [{ source }] = stats.toJson().modules;
-
-    expect(source).toMatchSnapshot();
-  });
-
-  it('{String} (big)', async () => {
-    const config = {
-      loader: {
-        test: /\.png$/,
-        options: {
-          limit: '8192',
         },
       },
     };

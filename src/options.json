@@ -2,7 +2,7 @@
   "type": "object",
   "properties": {
     "limit": {
-      "type": ["string", "number"]
+      "type": ["number"]
     },
     "mimetype": {
       "type": "string"
