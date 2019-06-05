@@ -15,6 +15,57 @@ describe('limit option', () => {
     expect(source).toMatchSnapshot();
   });
 
+  it('{Number} (6776)', async () => {
+    // Image size is 6777
+    const config = {
+      loader: {
+        test: /\.png$/,
+        options: {
+          limit: 6776,
+        },
+      },
+    };
+
+    const stats = await webpack('fixture.js', config);
+    const [{ source }] = stats.toJson().modules;
+
+    expect(source).toMatchSnapshot();
+  });
+
+  it('{Number} (6777)', async () => {
+    // Image size is 6777
+    const config = {
+      loader: {
+        test: /\.png$/,
+        options: {
+          limit: 6777,
+        },
+      },
+    };
+
+    const stats = await webpack('fixture.js', config);
+    const [{ source }] = stats.toJson().modules;
+
+    expect(source).toMatchSnapshot();
+  });
+
+  it('{Number} (6778)', async () => {
+    // Image size is 6777
+    const config = {
+      loader: {
+        test: /\.png$/,
+        options: {
+          limit: 6778,
+        },
+      },
+    };
+
+    const stats = await webpack('fixture.js', config);
+    const [{ source }] = stats.toJson().modules;
+
+    expect(source).toMatchSnapshot();
+  });
+
   it('{Number} (big)', async () => {
     const config = {
       loader: {

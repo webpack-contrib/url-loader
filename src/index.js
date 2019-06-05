@@ -31,7 +31,7 @@ export default function loader(src) {
   const mimetype = options.mimetype || mime.getType(file);
 
   // No limit or within the specified limit
-  if (!limit || src.length < limit) {
+  if (!limit || src.length <= limit) {
     if (typeof src === 'string') {
       src = Buffer.from(src);
     }
