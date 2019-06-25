@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.1](https://github.com/webpack-contrib/url-loader/compare/v2.0.0...v2.0.1) (2019-06-25)
+
+
+### Bug Fixes
+
+* allow using limit as string when you use loader with query string ([#185](https://github.com/webpack-contrib/url-loader/issues/185)) ([4842f93](https://github.com/webpack-contrib/url-loader/commit/4842f93))
+
+
+
 ## [2.0.0](https://github.com/webpack-contrib/url-loader/compare/v1.1.2...v2.0.0) (2019-06-05)
 
 
