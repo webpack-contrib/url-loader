@@ -3,7 +3,7 @@
 exports[`validation 1`] = `
 "URL Loader Invalid Options
 
-options.limit should be boolean,number
+options.limit should be boolean,number,string
 "
 `;
 
