@@ -16,7 +16,7 @@ function shouldTransform(limit, size) {
     return limit;
   }
 
-  if (typeof limit === 'number') {
+  if (typeof limit === 'number' || typeof limit === 'string') {
     return size <= parseInt(limit, 10);
   }
 

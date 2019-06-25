@@ -118,7 +118,7 @@ module.exports = {
 
 ### `limit`
 
-Type: `Number|Boolean`
+Type: `Number|Boolean|String`
 Default: `undefined`
 
 The limit can be specified via loader options and defaults to no limit.

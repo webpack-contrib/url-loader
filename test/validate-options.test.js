@@ -19,7 +19,8 @@ it('validation', async () => {
 
   expect(() => validate({ limit: 8192 })).not.toThrow();
   expect(() => validate({ limit: true })).not.toThrow();
-  expect(() => validate({ limit: '8192' })).toThrowErrorMatchingSnapshot();
+  expect(() => validate({ limit: '8192' })).not.toThrow();
+  expect(() => validate({ limit: [] })).toThrowErrorMatchingSnapshot();
 
   expect(() => validate({ mimetype: 'image/png' })).not.toThrow();
   expect(() => validate({ mimetype: true })).toThrowErrorMatchingSnapshot();
