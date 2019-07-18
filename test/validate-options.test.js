@@ -1,6 +1,6 @@
 import loader from '../src';
 
-it('validation', async () => {
+it('validate options', async () => {
   const validate = (options) =>
     loader.call(
       Object.assign(
@@ -13,6 +13,8 @@ it('validation', async () => {
       ),
       'context'
     );
+
+  expect(() => validate()).not.toThrow();
 
   // The `fallback` loader can have any optsions so we use `additionalProperties: false` to avoid problems.
   expect(() => validate({ unknown: 'unknown' })).not.toThrow();

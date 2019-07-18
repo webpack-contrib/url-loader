@@ -1,24 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`validation 1`] = `
-"URL Loader Invalid Options
-
-options.limit should be boolean,number,string
-"
+exports[`validate options 1`] = `
+"Invalid options object. URL Loader has been initialised using an options object that does not match the API schema.
+ - options.limit should be:
+   boolean | number | string
+   -> Enables/Disables transformation target file into base64 URIs (https://github.com/webpack-contrib/url-loader#limit)."
 `;
 
-exports[`validation 2`] = `
-"URL Loader Invalid Options
-
-options.mimetype should be string
-"
+exports[`validate options 2`] = `
+"Invalid options object. URL Loader has been initialised using an options object that does not match the API schema.
+ - options.mimetype should be a string.
+   -> The MIME type for the file to be transformed (https://github.com/webpack-contrib/url-loader#mimetype)."
 `;
 
-exports[`validation 3`] = `
-"URL Loader Invalid Options
-
-options.fallback should be string
-options.fallback should be object
-options.fallback should match some schema in anyOf
-"
+exports[`validate options 3`] = `
+"Invalid options object. URL Loader has been initialised using an options object that does not match the API schema.
+ - options.fallback should be one of these:
+   string | object { loader?, options? }
+   -> An alternative loader to use when a target file's size exceeds the limit set in the limit option (https://github.com/webpack-contrib/url-loader#fallback).
+   Details:
+    * options.fallback should be a string.
+    * options.fallback should be an object:
+      object { loader?, options? }"
 `;

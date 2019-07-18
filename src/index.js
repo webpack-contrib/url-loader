@@ -27,7 +27,10 @@ export default function loader(src) {
   // Loader Options
   const options = getOptions(this) || {};
 
-  validateOptions(schema, options, 'URL Loader');
+  validateOptions(schema, options, {
+    name: 'URL Loader',
+    baseDataPath: 'options',
+  });
 
   // No limit or within the specified limit
   if (shouldTransform(options.limit, src.length)) {
