@@ -132,6 +132,38 @@ describe('limit option', () => {
     expect(source).toMatchSnapshot();
   });
 
+  it('Number.MAX_VALUE ({Number})', async () => {
+    const config = {
+      loader: {
+        test: /\.png$/,
+        options: {
+          limit: Number.MAX_VALUE,
+        },
+      },
+    };
+
+    const stats = await webpack('fixture.js', config);
+    const [{ source }] = stats.toJson().modules;
+
+    expect(source).toMatchSnapshot();
+  });
+
+  it('Infinity ({Number})', async () => {
+    const config = {
+      loader: {
+        test: /\.png$/,
+        options: {
+          limit: Infinity,
+        },
+      },
+    };
+
+    const stats = await webpack('fixture.js', config);
+    const [{ source }] = stats.toJson().modules;
+
+    expect(source).toMatchSnapshot();
+  });
+
   it('true ({Boolean})', async () => {
     const config = {
       loader: {
