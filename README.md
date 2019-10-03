@@ -123,9 +123,9 @@ Default: `undefined`
 
 The limit can be specified via loader options and defaults to no limit.
 
-#### `Number`
+#### `Number|String`
 
-A `Number` specifying the maximum size of a file in bytes. If the file size is
+A `Number` or `String` specifying the maximum size of a file in bytes. If the file size is
 **equal** or **greater** than the limit [`file-loader`](https://github.com/webpack-contrib/file-loader)
 will be used (by default) and all query parameters are passed to it.
 Using an alternative to `file-loader` is enabled via the `fallback` option.
