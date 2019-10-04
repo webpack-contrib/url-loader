@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.2.0](https://github.com/webpack-contrib/url-loader/compare/v2.1.0...v2.2.0) (2019-10-04)
+
+
+### Features
+
+* limit allow using `Infinity` and `Number` ([#192](https://github.com/webpack-contrib/url-loader/issues/192)) ([2bffcfd](https://github.com/webpack-contrib/url-loader/commit/2bffcfd))
+* pnp support ([#195](https://github.com/webpack-contrib/url-loader/issues/195)) ([196110e](https://github.com/webpack-contrib/url-loader/commit/196110e))
+
 ## [2.1.0](https://github.com/webpack-contrib/url-loader/compare/v2.0.1...v2.1.0) (2019-07-18)
 
 
