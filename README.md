@@ -79,7 +79,7 @@ module.exports = {
           {
             loader: 'url-loader',
             options: {
-              fallback: 'responsive-loader',
+              fallback: require.resolve('responsive-loader'),
             },
           },
         ],
@@ -105,7 +105,7 @@ module.exports = {
           {
             loader: 'url-loader',
             options: {
-              fallback: 'responsive-loader',
+              fallback: require.resolve('responsive-loader'),
               quality: 85,
             },
           },
