@@ -30,7 +30,7 @@ const output = (config) => {
       __dirname,
       `../outputs/${config.output ? config.output : ''}`
     ),
-    filename: '[name].js',
+    filename: '[name].bundle.js',
     chunkFilename: '[name].chunk.js',
   };
 };
@@ -38,13 +38,17 @@ const output = (config) => {
 export default function(fixture, config, options) {
   // eslint-disable-next-line no-param-reassign
   config = {
-    mode: 'development',
+    mode: config.mode || 'development',
     devtool: config.devtool || 'sourcemap',
     context: path.resolve(__dirname, '..', 'fixtures'),
     entry: `./${fixture}`,
     output: output(config),
     module: modules(config),
     plugins: plugins(config),
+    optimization: {
+      minimize: false,
+      runtimeChunk: false,
+    },
   };
 
   // eslint-disable-next-line no-param-reassign

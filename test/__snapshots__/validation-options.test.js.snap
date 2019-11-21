@@ -23,3 +23,8 @@ exports[`validate options 3`] = `
     * options.fallback should be an object:
       object { loader?, options? }"
 `;
+
+exports[`validate options 4`] = `
+"Invalid options object. URL Loader has been initialised using an options object that does not match the API schema.
+ - options.esModules should be a boolean."
+`;

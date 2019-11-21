@@ -37,6 +37,9 @@
           "type": "object"
         }
       ]
+    },
+    "esModules": {
+      "type": "boolean"
     }
   },
   "additionalProperties": true

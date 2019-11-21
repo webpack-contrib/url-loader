@@ -36,4 +36,41 @@ describe('Loader', () => {
     expect(errors).toMatchSnapshot('errors');
     expect(warnings).toMatchSnapshot('warnings');
   });
+
+  it('should work with ModuleConcatenationPlugin', async () => {
+    const config = {
+      mode: 'production',
+      loader: {
+        test: /(png|jpg|svg)/,
+        options: {
+          esModules: true,
+        },
+      },
+    };
+
+    const stats = await webpack('fixture.js', config);
+
+    expect(
+      stats.compilation.assets['main.bundle.js'].source()
+    ).toMatchSnapshot();
+  });
+
+  it('should work with ModuleConcatenationPlugin with fallback', async () => {
+    const config = {
+      mode: 'production',
+      loader: {
+        test: /(png|jpg|svg)/,
+        options: {
+          esModules: true,
+          limit: 10,
+        },
+      },
+    };
+
+    const stats = await webpack('fixture.js', config);
+
+    expect(
+      stats.compilation.assets['main.bundle.js'].source()
+    ).toMatchSnapshot();
+  });
 });

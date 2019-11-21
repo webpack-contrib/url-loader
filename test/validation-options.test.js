@@ -42,4 +42,8 @@ it('validate options', async () => {
     })
   ).not.toThrow();
   expect(() => validate({ fallback: true })).toThrowErrorMatchingSnapshot();
+
+  expect(() => validate({ esModules: true })).not.toThrow();
+  expect(() => validate({ esModules: false })).not.toThrow();
+  expect(() => validate({ esModules: 'true' })).toThrowErrorMatchingSnapshot();
 });
