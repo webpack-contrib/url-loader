@@ -208,6 +208,38 @@ module.exports = {
 };
 ```
 
+### `esModule`
+
+Type: `Boolean`
+Default: `true`
+
+By default, `file-loader` generates JS modules that use the ES modules syntax.
+There are some cases in which using ES modules is beneficial, like in the case of [module concatenation](https://webpack.js.org/plugins/module-concatenation-plugin/) and [tree shaking](https://webpack.js.org/guides/tree-shaking/).
+
+You can enable a CommonJS module syntax using:
+
+**webpack.config.js**
+
+```js
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              esModule: false,
+            },
+          },
+        ],
+      },
+    ],
+  },
+};
+```
+
 ## Contributing
 
 Please take a moment to read our contributing guidelines if you haven't yet done so.

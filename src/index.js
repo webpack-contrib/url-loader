@@ -1,9 +1,3 @@
-/* eslint-disable
-  global-require,
-  no-param-reassign,
-  prefer-destructuring,
-  import/no-dynamic-require,
-*/
 import { getOptions } from 'loader-utils';
 import validateOptions from 'schema-utils';
 import mime from 'mime';
@@ -39,15 +33,18 @@ export default function loader(src) {
   // No limit or within the specified limit
   if (shouldTransform(options.limit, src.length)) {
     const file = this.resourcePath;
-    // Get MIME type
     const mimetype = options.mimetype || mime.getType(file);
 
     if (typeof src === 'string') {
+      // eslint-disable-next-line no-param-reassign
       src = Buffer.from(src);
     }
 
+    const esModule =
+      typeof options.esModule !== 'undefined' ? options.esModule : true;
+
     return `${
-      options.esModules ? 'export default' : 'module.exports ='
+      esModule ? 'export default' : 'module.exports ='
     } ${JSON.stringify(
       `data:${mimetype || ''};base64,${src.toString('base64')}`
     )}`;
@@ -60,6 +57,7 @@ export default function loader(src) {
   } = normalizeFallback(options.fallback, options);
 
   // Require the fallback.
+  // eslint-disable-next-line global-require, import/no-dynamic-require
   const fallback = require(fallbackLoader);
 
   // Call the fallback, passing a copy of the loader context. The copy has the query replaced. This way, the fallback

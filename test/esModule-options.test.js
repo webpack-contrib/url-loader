@@ -6,47 +6,45 @@ import {
   readAsset,
 } from './helpers';
 
-describe('"mimetype" option', () => {
-  it('should work with unspecified value', async () => {
+// TODO
+describe('"esModule" option', () => {
+  it('should work without value', async () => {
     const compiler = getCompiler('simple.js');
     const stats = await compile(compiler);
 
     expect(
       execute(readAsset('main.bundle.js', compiler, stats))
     ).toMatchSnapshot('result');
-    expect(Object.keys(stats.compilation.assets)).toMatchSnapshot('assets');
     expect(normalizeErrors(stats.compilation.warnings)).toMatchSnapshot(
       'warnings'
     );
     expect(normalizeErrors(stats.compilation.errors)).toMatchSnapshot('errors');
   });
 
-  it('should work with "String" value', async () => {
+  it('should work with "Boolean" value equal "true"', async () => {
     const compiler = getCompiler('simple.js', {
-      mimetype: 'image/x-custom',
+      esModule: true,
     });
     const stats = await compile(compiler);
 
     expect(
       execute(readAsset('main.bundle.js', compiler, stats))
     ).toMatchSnapshot('result');
-    expect(Object.keys(stats.compilation.assets)).toMatchSnapshot('assets');
     expect(normalizeErrors(stats.compilation.warnings)).toMatchSnapshot(
       'warnings'
     );
     expect(normalizeErrors(stats.compilation.errors)).toMatchSnapshot('errors');
   });
 
-  it('should work with "String" value equal to unknown/unknown', async () => {
+  it('should work with "Boolean" value equal "false"', async () => {
     const compiler = getCompiler('simple.js', {
-      mimetype: 'unknown/unknown',
+      esModule: false,
     });
     const stats = await compile(compiler);
 
     expect(
       execute(readAsset('main.bundle.js', compiler, stats))
     ).toMatchSnapshot('result');
-    expect(Object.keys(stats.compilation.assets)).toMatchSnapshot('assets');
     expect(normalizeErrors(stats.compilation.warnings)).toMatchSnapshot(
       'warnings'
     );
