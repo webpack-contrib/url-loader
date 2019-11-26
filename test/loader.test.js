@@ -1,76 +1,133 @@
-import webpack from './helpers/compiler';
+import path from 'path';
 
-describe('Loader', () => {
-  it('should works', async () => {
-    const config = {
-      loader: {
-        test: /\.png$/,
-        options: {},
-      },
-    };
+import {
+  compile,
+  execute,
+  getCompiler,
+  normalizeErrors,
+  readAsset,
+} from './helpers';
 
-    const stats = await webpack('fixture.js', config);
-    const { modules, errors, warnings } = stats.toJson();
+describe('loader', () => {
+  it('should work with unspecified value', async () => {
+    const compiler = getCompiler('simple.js');
+    const stats = await compile(compiler);
 
-    expect(modules[0].source).toMatchSnapshot();
-    expect(errors).toMatchSnapshot('errors');
-    expect(warnings).toMatchSnapshot('warnings');
+    expect(
+      execute(readAsset('main.bundle.js', compiler, stats))
+    ).toMatchSnapshot('result');
+    expect(Object.keys(stats.compilation.assets)).toMatchSnapshot('assets');
+    expect(normalizeErrors(stats.compilation.warnings)).toMatchSnapshot(
+      'warnings'
+    );
+    expect(normalizeErrors(stats.compilation.errors)).toMatchSnapshot('errors');
   });
 
-  it('should works when limit as a query string', async () => {
-    const config = {
-      rules: [
-        {
-          test: /\.png$/,
-          use: {
-            loader: `${require.resolve('../src')}?limit=10000`,
-          },
+  it('should work with SVG', async () => {
+    const compiler = getCompiler('simple-svg.js');
+    const stats = await compile(compiler);
+
+    expect(
+      execute(readAsset('main.bundle.js', compiler, stats))
+    ).toMatchSnapshot('result');
+    expect(Object.keys(stats.compilation.assets)).toMatchSnapshot('assets');
+    expect(normalizeErrors(stats.compilation.warnings)).toMatchSnapshot(
+      'warnings'
+    );
+    expect(normalizeErrors(stats.compilation.errors)).toMatchSnapshot('errors');
+  });
+
+  it('should work with loader that exported string', async () => {
+    const compiler = getCompiler(
+      'simple.js',
+      {},
+      {
+        module: {
+          rules: [
+            {
+              test: /\.(gif|jpg|png|svg)$/i,
+              rules: [
+                {
+                  loader: path.resolve(__dirname, '../src'),
+                },
+                {
+                  loader: path.resolve(__dirname, 'fixtures/string-raw-loader'),
+                },
+              ],
+            },
+          ],
         },
-      ],
-    };
+      }
+    );
+    const stats = await compile(compiler);
 
-    const stats = await webpack('fixture.js', config);
-    const { modules, errors, warnings } = stats.toJson();
-
-    expect(modules[0].source).toMatchSnapshot();
-    expect(errors).toMatchSnapshot('errors');
-    expect(warnings).toMatchSnapshot('warnings');
+    expect(
+      execute(readAsset('main.bundle.js', compiler, stats))
+    ).toMatchSnapshot('result');
+    expect(Object.keys(stats.compilation.assets)).toMatchSnapshot('assets');
+    expect(normalizeErrors(stats.compilation.warnings)).toMatchSnapshot(
+      'warnings'
+    );
+    expect(normalizeErrors(stats.compilation.errors)).toMatchSnapshot('errors');
   });
 
   it('should work with ModuleConcatenationPlugin', async () => {
-    const config = {
-      mode: 'production',
-      loader: {
-        test: /(png|jpg|svg)/,
-        options: {
-          esModules: true,
+    const compiler = getCompiler(
+      'simple.js',
+      {},
+      {
+        mode: 'production',
+        optimization: {
+          minimize: false,
         },
-      },
-    };
-
-    const stats = await webpack('fixture.js', config);
+      }
+    );
+    const stats = await compile(compiler);
 
     expect(
-      stats.compilation.assets['main.bundle.js'].source()
-    ).toMatchSnapshot();
+      execute(readAsset('main.bundle.js', compiler, stats))
+    ).toMatchSnapshot('result');
+    expect(Object.keys(stats.compilation.assets)).toMatchSnapshot('assets');
+    expect(normalizeErrors(stats.compilation.warnings)).toMatchSnapshot(
+      'warnings'
+    );
+    expect(normalizeErrors(stats.compilation.errors)).toMatchSnapshot('errors');
+
+    if (stats.compilation.modules.size) {
+      expect(stats.compilation.modules.size).toBe(1);
+    } else {
+      expect(stats.compilation.modules.length).toBe(1);
+    }
   });
 
   it('should work with ModuleConcatenationPlugin with fallback', async () => {
-    const config = {
-      mode: 'production',
-      loader: {
-        test: /(png|jpg|svg)/,
-        options: {
-          esModules: true,
-          limit: 10,
-        },
+    const compiler = getCompiler(
+      'simple.js',
+      {
+        limit: 10,
       },
-    };
-
-    const stats = await webpack('fixture.js', config);
+      {
+        mode: 'production',
+        optimization: {
+          minimize: false,
+        },
+      }
+    );
+    const stats = await compile(compiler);
 
     expect(
-      stats.compilation.assets['main.bundle.js'].source()
-    ).toMatchSnapshot();
+      execute(readAsset('main.bundle.js', compiler, stats))
+    ).toMatchSnapshot('result');
+    expect(Object.keys(stats.compilation.assets)).toMatchSnapshot('assets');
+    expect(normalizeErrors(stats.compilation.warnings)).toMatchSnapshot(
+      'warnings'
+    );
+    expect(normalizeErrors(stats.compilation.errors)).toMatchSnapshot('errors');
+
+    if (stats.compilation.modules.size) {
+      expect(stats.compilation.modules.size).toBe(2);
+    } else {
+      expect(stats.compilation.modules.length).toBe(1);
+    }
   });
 });
