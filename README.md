@@ -118,7 +118,7 @@ module.exports = {
 
 ### `limit`
 
-Type: `Number|Boolean|String`
+Type: `Number|Boolean|String|Function`
 Default: `undefined`
 
 The limit can be specified via loader options and defaults to no limit.
@@ -169,6 +169,39 @@ module.exports = {
             loader: 'url-loader',
             options: {
               limit: false,
+            },
+          },
+        ],
+      },
+    ],
+  },
+};
+```
+
+#### `Function`
+
+Function receiving loader context and returns the limit value as a Number, Boolean, or String:
+
+**webpack.config.js**
+
+```js
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.(png|jpg|gif)$/i,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: function(context) {
+                const params = new URLSearchParams(context.resourceQuery);
+                const limit = params.get('limit');
+                if (['true', 'false'].includes(limit)) {
+                  return limit === 'true';
+                }
+                return isNaN(parseInt(limit, 10)) ? true : limit;
+              },
             },
           },
         ],

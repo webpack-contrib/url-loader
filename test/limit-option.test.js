@@ -280,4 +280,244 @@ describe('limit option', () => {
 
     expect(source).toMatchSnapshot();
   });
+
+  it('?limit=0 ({Function})', async () => {
+    // Image size is 6777
+    const config = {
+      loader: {
+        test: /\.png$/,
+        options: {
+          limit(context) {
+            const params = new URLSearchParams(context.resourceQuery);
+            const limit = params.get('limit');
+            if (['true', 'false'].includes(limit)) {
+              return limit === 'true';
+            }
+            return isNaN(parseInt(limit, 10)) ? true : limit;
+          },
+        },
+      },
+    };
+
+    const stats = await webpack('fixture-fn-limit-0.js', config);
+    const [{ source }] = stats.toJson().modules;
+
+    expect(source).toMatchSnapshot();
+  });
+
+  it('?limit=0.1 ({Function})', async () => {
+    // Image size is 6777
+    const config = {
+      loader: {
+        test: /\.png$/,
+        options: {
+          limit(context) {
+            const params = new URLSearchParams(context.resourceQuery);
+            const limit = params.get('limit');
+            if (['true', 'false'].includes(limit)) {
+              return limit === 'true';
+            }
+            return isNaN(parseInt(limit, 10)) ? true : limit;
+          },
+        },
+      },
+    };
+
+    const stats = await webpack('fixture-fn-limit-0.1.js', config);
+    const [{ source }] = stats.toJson().modules;
+
+    expect(source).toMatchSnapshot();
+  });
+
+  it('?limit=6776 ({Function})', async () => {
+    // Image size is 6777
+    const config = {
+      loader: {
+        test: /\.png$/,
+        options: {
+          limit(context) {
+            const params = new URLSearchParams(context.resourceQuery);
+            const limit = params.get('limit');
+            if (['true', 'false'].includes(limit)) {
+              return limit === 'true';
+            }
+            return isNaN(parseInt(limit, 10)) ? true : limit;
+          },
+        },
+      },
+    };
+
+    const stats = await webpack('fixture-fn-limit-6776.js', config);
+    const [{ source }] = stats.toJson().modules;
+
+    expect(source).toMatchSnapshot();
+  });
+
+  it('?limit=6777 ({Function})', async () => {
+    // Image size is 6777
+    const config = {
+      loader: {
+        test: /\.png$/,
+        options: {
+          limit(context) {
+            const params = new URLSearchParams(context.resourceQuery);
+            const limit = params.get('limit');
+            if (['true', 'false'].includes(limit)) {
+              return limit === 'true';
+            }
+            return isNaN(parseInt(limit, 10)) ? true : limit;
+          },
+        },
+      },
+    };
+
+    const stats = await webpack('fixture-fn-limit-6777.js', config);
+    const [{ source }] = stats.toJson().modules;
+
+    expect(source).toMatchSnapshot();
+  });
+
+  it('?limit=6778 ({Function})', async () => {
+    // Image size is 6777
+    const config = {
+      loader: {
+        test: /\.png$/,
+        options: {
+          limit(context) {
+            const params = new URLSearchParams(context.resourceQuery);
+            const limit = params.get('limit');
+            if (['true', 'false'].includes(limit)) {
+              return limit === 'true';
+            }
+            return isNaN(parseInt(limit, 10)) ? true : limit;
+          },
+        },
+      },
+    };
+
+    const stats = await webpack('fixture-fn-limit-6778.js', config);
+    const [{ source }] = stats.toJson().modules;
+
+    expect(source).toMatchSnapshot();
+  });
+
+  it('?limit=true ({Function})', async () => {
+    // Image size is 6777
+    const config = {
+      loader: {
+        test: /\.png$/,
+        options: {
+          limit(context) {
+            const params = new URLSearchParams(context.resourceQuery);
+            const limit = params.get('limit');
+            if (['true', 'false'].includes(limit)) {
+              return limit === 'true';
+            }
+            return isNaN(parseInt(limit, 10)) ? true : limit;
+          },
+        },
+      },
+    };
+
+    const stats = await webpack('fixture-fn-limit-true.js', config);
+    const [{ source }] = stats.toJson().modules;
+
+    expect(source).toMatchSnapshot();
+  });
+
+  it('?limit=false ({Function})', async () => {
+    // Image size is 6777
+    const config = {
+      loader: {
+        test: /\.png$/,
+        options: {
+          limit(context) {
+            const params = new URLSearchParams(context.resourceQuery);
+            const limit = params.get('limit');
+            if (['true', 'false'].includes(limit)) {
+              return limit === 'true';
+            }
+            return isNaN(parseInt(limit, 10)) ? true : limit;
+          },
+        },
+      },
+    };
+
+    const stats = await webpack('fixture-fn-limit-false.js', config);
+    const [{ source }] = stats.toJson().modules;
+
+    expect(source).toMatchSnapshot();
+  });
+
+  it('?limit=invalid ({Function})', async () => {
+    // Image size is 6777
+    const config = {
+      loader: {
+        test: /\.png$/,
+        options: {
+          limit(context) {
+            const params = new URLSearchParams(context.resourceQuery);
+            const limit = params.get('limit');
+            if (['true', 'false'].includes(limit)) {
+              return limit === 'true';
+            }
+            return isNaN(parseInt(limit, 10)) ? true : limit;
+          },
+        },
+      },
+    };
+
+    const stats = await webpack('fixture-fn-limit-invalid.js', config);
+    const [{ source }] = stats.toJson().modules;
+
+    expect(source).toMatchSnapshot();
+  });
+
+  it('? ({Function})', async () => {
+    // Image size is 6777
+    const config = {
+      loader: {
+        test: /\.png$/,
+        options: {
+          limit(context) {
+            const params = new URLSearchParams(context.resourceQuery);
+            const limit = params.get('limit');
+            if (['true', 'false'].includes(limit)) {
+              return limit === 'true';
+            }
+            return isNaN(parseInt(limit, 10)) ? true : limit;
+          },
+        },
+      },
+    };
+
+    const stats = await webpack('fixture-fn-limit-omitted-param.js', config);
+    const [{ source }] = stats.toJson().modules;
+
+    expect(source).toMatchSnapshot();
+  });
+
+  it('?limit= ({Function})', async () => {
+    // Image size is 6777
+    const config = {
+      loader: {
+        test: /\.png$/,
+        options: {
+          limit(context) {
+            const params = new URLSearchParams(context.resourceQuery);
+            const limit = params.get('limit');
+            if (['true', 'false'].includes(limit)) {
+              return limit === 'true';
+            }
+            return isNaN(parseInt(limit, 10)) ? true : limit;
+          },
+        },
+      },
+    };
+
+    const stats = await webpack('fixture-fn-limit-omitted-value.js', config);
+    const [{ source }] = stats.toJson().modules;
+
+    expect(source).toMatchSnapshot();
+  });
 });

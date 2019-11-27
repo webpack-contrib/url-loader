@@ -29,7 +29,12 @@ function shouldTransform(limit, size) {
 
 export default function loader(src) {
   // Loader Options
-  const options = getOptions(this) || {};
+  const options = Object.assign({}, getOptions(this));
+
+  // Evaluate limit if expressed as a function
+  if (typeof options.limit === 'function') {
+    options.limit = options.limit(this);
+  }
 
   validateOptions(schema, options, {
     name: 'URL Loader',
