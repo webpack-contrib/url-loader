@@ -38,7 +38,7 @@
         }
       ]
     },
-    "esModules": {
+    "esModule": {
       "type": "boolean"
     }
   },

@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.0](https://github.com/webpack-contrib/url-loader/compare/v2.0.0...v3.0.0) (2019-11-26)
+
+
+### BREAKING CHANGES
+
+* minimum required nodejs version is `10.13.0`
+* rename the `esModules` option to `esModule`
+* switch to ES modules by default (the option `esModule` is `true` by default)
+
+
 ## [2.3.0](https://github.com/webpack-contrib/url-loader/compare/v2.2.0...v2.3.0) (2019-11-21)
 
 
