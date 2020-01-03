@@ -3,7 +3,7 @@
 exports[`validate options should throw an error on the "esModule" option with "true" value 1`] = `
 "Invalid options object. URL Loader has been initialised using an options object that does not match the API schema.
  - options.esModule should be a boolean.
-   -> By default, file-loader generates JS modules that use the ES modules syntax."
+   -> By default, url-loader generates JS modules that use the ES modules syntax."
 `;
 
 exports[`validate options should throw an error on the "fallback" option with "true" value 1`] = `
