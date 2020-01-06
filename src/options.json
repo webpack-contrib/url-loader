@@ -39,6 +39,7 @@
       ]
     },
     "esModule": {
+      "description": "By default, url-loader generates JS modules that use the ES modules syntax.",
       "type": "boolean"
     }
   },
