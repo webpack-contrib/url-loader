@@ -2,14 +2,14 @@
 
 exports[`"limit" option should work with "Boolean" value equal to false: assets 1`] = `
 Array [
-  "9c87cbf3ba33126ffd25ae7f2f6bbafb.png",
+  "39f5c21c1aee6ff21844c6e1d8251d97.png",
   "main.bundle.js",
 ]
 `;
 
 exports[`"limit" option should work with "Boolean" value equal to false: errors 1`] = `Array []`;
 
-exports[`"limit" option should work with "Boolean" value equal to false: result 1`] = `"9c87cbf3ba33126ffd25ae7f2f6bbafb.png"`;
+exports[`"limit" option should work with "Boolean" value equal to false: result 1`] = `"39f5c21c1aee6ff21844c6e1d8251d97.png"`;
 
 exports[`"limit" option should work with "Boolean" value equal to false: warnings 1`] = `Array []`;
 
@@ -27,40 +27,40 @@ exports[`"limit" option should work with "Boolean" value equal to true: warnings
 
 exports[`"limit" option should work with "Number" value equal to 0.1: assets 1`] = `
 Array [
-  "9c87cbf3ba33126ffd25ae7f2f6bbafb.png",
+  "39f5c21c1aee6ff21844c6e1d8251d97.png",
   "main.bundle.js",
 ]
 `;
 
 exports[`"limit" option should work with "Number" value equal to 0.1: errors 1`] = `Array []`;
 
-exports[`"limit" option should work with "Number" value equal to 0.1: result 1`] = `"9c87cbf3ba33126ffd25ae7f2f6bbafb.png"`;
+exports[`"limit" option should work with "Number" value equal to 0.1: result 1`] = `"39f5c21c1aee6ff21844c6e1d8251d97.png"`;
 
 exports[`"limit" option should work with "Number" value equal to 0.1: warnings 1`] = `Array []`;
 
 exports[`"limit" option should work with "Number" value equal to 0: assets 1`] = `
 Array [
-  "9c87cbf3ba33126ffd25ae7f2f6bbafb.png",
+  "39f5c21c1aee6ff21844c6e1d8251d97.png",
   "main.bundle.js",
 ]
 `;
 
 exports[`"limit" option should work with "Number" value equal to 0: errors 1`] = `Array []`;
 
-exports[`"limit" option should work with "Number" value equal to 0: result 1`] = `"9c87cbf3ba33126ffd25ae7f2f6bbafb.png"`;
+exports[`"limit" option should work with "Number" value equal to 0: result 1`] = `"39f5c21c1aee6ff21844c6e1d8251d97.png"`;
 
 exports[`"limit" option should work with "Number" value equal to 0: warnings 1`] = `Array []`;
 
 exports[`"limit" option should work with "Number" value equal to 6776: assets 1`] = `
 Array [
-  "9c87cbf3ba33126ffd25ae7f2f6bbafb.png",
+  "39f5c21c1aee6ff21844c6e1d8251d97.png",
   "main.bundle.js",
 ]
 `;
 
 exports[`"limit" option should work with "Number" value equal to 6776: errors 1`] = `Array []`;
 
-exports[`"limit" option should work with "Number" value equal to 6776: result 1`] = `"9c87cbf3ba33126ffd25ae7f2f6bbafb.png"`;
+exports[`"limit" option should work with "Number" value equal to 6776: result 1`] = `"39f5c21c1aee6ff21844c6e1d8251d97.png"`;
 
 exports[`"limit" option should work with "Number" value equal to 6776: warnings 1`] = `Array []`;
 
@@ -126,53 +126,53 @@ exports[`"limit" option should work with "Number" value equal to Number.MAX_VALU
 
 exports[`"limit" option should work with "Number" value equal to Number.MIN_SAFE_INTEGER: assets 1`] = `
 Array [
-  "9c87cbf3ba33126ffd25ae7f2f6bbafb.png",
+  "39f5c21c1aee6ff21844c6e1d8251d97.png",
   "main.bundle.js",
 ]
 `;
 
 exports[`"limit" option should work with "Number" value equal to Number.MIN_SAFE_INTEGER: errors 1`] = `Array []`;
 
-exports[`"limit" option should work with "Number" value equal to Number.MIN_SAFE_INTEGER: result 1`] = `"9c87cbf3ba33126ffd25ae7f2f6bbafb.png"`;
+exports[`"limit" option should work with "Number" value equal to Number.MIN_SAFE_INTEGER: result 1`] = `"39f5c21c1aee6ff21844c6e1d8251d97.png"`;
 
 exports[`"limit" option should work with "Number" value equal to Number.MIN_SAFE_INTEGER: warnings 1`] = `Array []`;
 
 exports[`"limit" option should work with "String" value equal to 0.1: assets 1`] = `
 Array [
-  "9c87cbf3ba33126ffd25ae7f2f6bbafb.png",
+  "39f5c21c1aee6ff21844c6e1d8251d97.png",
   "main.bundle.js",
 ]
 `;
 
 exports[`"limit" option should work with "String" value equal to 0.1: errors 1`] = `Array []`;
 
-exports[`"limit" option should work with "String" value equal to 0.1: result 1`] = `"9c87cbf3ba33126ffd25ae7f2f6bbafb.png"`;
+exports[`"limit" option should work with "String" value equal to 0.1: result 1`] = `"39f5c21c1aee6ff21844c6e1d8251d97.png"`;
 
 exports[`"limit" option should work with "String" value equal to 0.1: warnings 1`] = `Array []`;
 
 exports[`"limit" option should work with "String" value equal to 0: assets 1`] = `
 Array [
-  "9c87cbf3ba33126ffd25ae7f2f6bbafb.png",
+  "39f5c21c1aee6ff21844c6e1d8251d97.png",
   "main.bundle.js",
 ]
 `;
 
 exports[`"limit" option should work with "String" value equal to 0: errors 1`] = `Array []`;
 
-exports[`"limit" option should work with "String" value equal to 0: result 1`] = `"9c87cbf3ba33126ffd25ae7f2f6bbafb.png"`;
+exports[`"limit" option should work with "String" value equal to 0: result 1`] = `"39f5c21c1aee6ff21844c6e1d8251d97.png"`;
 
 exports[`"limit" option should work with "String" value equal to 0: warnings 1`] = `Array []`;
 
 exports[`"limit" option should work with "String" value equal to 6776: assets 1`] = `
 Array [
-  "9c87cbf3ba33126ffd25ae7f2f6bbafb.png",
+  "39f5c21c1aee6ff21844c6e1d8251d97.png",
   "main.bundle.js",
 ]
 `;
 
 exports[`"limit" option should work with "String" value equal to 6776: errors 1`] = `Array []`;
 
-exports[`"limit" option should work with "String" value equal to 6776: result 1`] = `"9c87cbf3ba33126ffd25ae7f2f6bbafb.png"`;
+exports[`"limit" option should work with "String" value equal to 6776: result 1`] = `"39f5c21c1aee6ff21844c6e1d8251d97.png"`;
 
 exports[`"limit" option should work with "String" value equal to 6776: warnings 1`] = `Array []`;
 

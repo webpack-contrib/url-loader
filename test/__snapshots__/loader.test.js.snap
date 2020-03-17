@@ -2,14 +2,14 @@
 
 exports[`loader should work with ModuleConcatenationPlugin with fallback: assets 1`] = `
 Array [
-  "9c87cbf3ba33126ffd25ae7f2f6bbafb.png",
+  "39f5c21c1aee6ff21844c6e1d8251d97.png",
   "main.bundle.js",
 ]
 `;
 
 exports[`loader should work with ModuleConcatenationPlugin with fallback: errors 1`] = `Array []`;
 
-exports[`loader should work with ModuleConcatenationPlugin with fallback: result 1`] = `"9c87cbf3ba33126ffd25ae7f2f6bbafb.png"`;
+exports[`loader should work with ModuleConcatenationPlugin with fallback: result 1`] = `"39f5c21c1aee6ff21844c6e1d8251d97.png"`;
 
 exports[`loader should work with ModuleConcatenationPlugin with fallback: warnings 1`] = `Array []`;
 
