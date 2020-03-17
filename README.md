@@ -183,8 +183,7 @@ module.exports = {
 Type: `String`
 Default: `(file extension)`
 
-Sets the MIME type for the file to be transformed. If unspecified the file
-extensions will be used to lookup the MIME type.
+Sets the MIME type for the file to be transformed. If unspecified the file extensions will be used to lookup the MIME type.
 
 **webpack.config.js**
 
