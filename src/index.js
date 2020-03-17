@@ -1,6 +1,8 @@
+import path from 'path';
+
 import { getOptions } from 'loader-utils';
 import validateOptions from 'schema-utils';
-import mime from 'mime';
+import mime from 'mime-types';
 
 import normalizeFallback from './utils/normalizeFallback';
 import schema from './options.json';
@@ -33,7 +35,7 @@ export default function loader(src) {
   // No limit or within the specified limit
   if (shouldTransform(options.limit, src.length)) {
     const file = this.resourcePath;
-    const mimetype = options.mimetype || mime.getType(file);
+    const mimetype = options.mimetype || mime.contentType(path.extname(file));
 
     if (typeof src === 'string') {
       // eslint-disable-next-line no-param-reassign
