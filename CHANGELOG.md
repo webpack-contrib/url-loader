@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.0.0](https://github.com/webpack-contrib/url-loader/compare/v3.0.0...v4.0.0) (2020-03-17)
+
+
+### ⚠ BREAKING CHANGES
+
+* **deps:** migrate on `mime-types` package, some rare types may have other mimetype
+
+### Bug Fixes
+
+*  description on the `esModule` option ([#204](https://github.com/webpack-contrib/url-loader/issues/204)) ([a2f127d](https://github.com/webpack-contrib/url-loader/commit/a2f127d16b88cda3c38509821a51487a89827c28))
+
+
+* **deps:** migrate on `mime-types` package ([#209](https://github.com/webpack-contrib/url-loader/issues/209)) ([fc8721f](https://github.com/webpack-contrib/url-loader/commit/fc8721f49626360dd81300085a747b3afa5acd38))
+
 ## [3.0.0](https://github.com/webpack-contrib/url-loader/compare/v2.0.0...v3.0.0) (2019-11-26)
 
 
