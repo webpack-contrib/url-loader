@@ -207,6 +207,35 @@ module.exports = {
 };
 ```
 
+### `encoding`
+
+Type: `String`
+Default: `base64`
+
+Specify the encoding which the file will be in-lined with. It supports (Node.js Buffer Encodings)[https://www.w3resource.com/node.js/nodejs-buffer.php] If the encoding is not supported the default `base64` encoding will be used.
+
+**webpack.config.js**
+
+```js
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.svg$/i,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              mimetype: 'utf8',
+            },
+          },
+        ],
+      },
+    ],
+  },
+};
+```
+
 ### `esModule`
 
 Type: `Boolean`

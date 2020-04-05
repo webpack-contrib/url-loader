@@ -5,6 +5,10 @@
       "description": "Enables/Disables transformation target file into base64 URIs (https://github.com/webpack-contrib/url-loader#limit).",
       "type": ["boolean", "number", "string"]
     },
+    "encoding": {
+      "description": "Specify the encoding which the file will be in-lined with.",
+      "type": "string"
+    },
     "mimetype": {
       "description": "The MIME type for the file to be transformed (https://github.com/webpack-contrib/url-loader#mimetype).",
       "type": "string"

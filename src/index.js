@@ -45,10 +45,18 @@ export default function loader(src) {
     const esModule =
       typeof options.esModule !== 'undefined' ? options.esModule : true;
 
+    let encodedData;
+    try {
+      encodedData = src.toString(options.encoding || 'base64');
+    } catch (e) {
+      options.encoding = 'base64';
+      encodedData = src.toString(options.encoding);
+    }
+
     return `${
       esModule ? 'export default' : 'module.exports ='
     } ${JSON.stringify(
-      `data:${mimetype || ''};base64,${src.toString('base64')}`
+      `data:${mimetype || ''};${options.encoding || 'base64'},${encodedData}`
     )}`;
   }
 
