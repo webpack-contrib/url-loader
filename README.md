@@ -226,7 +226,7 @@ module.exports = {
           {
             loader: 'url-loader',
             options: {
-              mimetype: 'utf8',
+              encoding: 'utf8',
             },
           },
         ],
