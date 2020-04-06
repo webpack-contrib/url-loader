@@ -236,12 +236,11 @@ module.exports = {
 };
 ```
 
-### `source`
+### `generator`
 
 Type: `Function`
-Default: `data:${mimetype || ''};${encoding},${src.toString(encoding)}`
 
-You can create you own custom implementation for encoding data. `source` argument is a [`Buffer`](https://nodejs.org/api/buffer.html) instance. in the example we are compressing svg files using [mini-svg-data-uri](https://github.com/tigt/mini-svg-data-uri) implementation.
+You can create you own custom implementation for encoding data. `generator` argument is a [`Buffer`](https://nodejs.org/api/buffer.html) instance of the file. in the example we are compressing svg files using [mini-svg-data-uri](https://github.com/tigt/mini-svg-data-uri) implementation.
 
 **webpack.config.js**
 

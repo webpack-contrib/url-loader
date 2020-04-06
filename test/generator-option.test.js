@@ -4,10 +4,11 @@ import {
   getCompiler,
   normalizeErrors,
   readAsset,
-  customSourceImplementation,
 } from './helpers';
 
-describe('"source" option', () => {
+const svgToMiniDataURI = require('mini-svg-data-uri');
+
+describe('"generator" option', () => {
   it('should work with unspecified value with the default base64 encoding', async () => {
     const compiler = getCompiler('simple-svg.js');
     const stats = await compile(compiler);
@@ -21,9 +22,9 @@ describe('"source" option', () => {
     );
     expect(normalizeErrors(stats.compilation.errors)).toMatchSnapshot('errors');
   });
-  it('should work with "Function" right custom source implementation for encoding', async () => {
+  it('should work with "Function" right mini-svg-data-uri encoding', async () => {
     const compiler = getCompiler('simple-svg.js', {
-      source: (content) => customSourceImplementation(content),
+      generator: (content) => svgToMiniDataURI(content.toString()),
     });
     const stats = await compile(compiler);
 
@@ -36,9 +37,9 @@ describe('"source" option', () => {
     );
     expect(normalizeErrors(stats.compilation.errors)).toMatchSnapshot('errors');
   });
-  it('should work with "Function" that return the encoding manually', async () => {
+  it('should work with "Function" generating encoding manually', async () => {
     const compiler = getCompiler('simple-svg.js', {
-      source: (content) => `data:image/svg+xml;utf8,${content}`,
+      generator: (content) => `data:image/svg;utf8,${content.toString('utf8')}`,
     });
     const stats = await compile(compiler);
 

@@ -19,7 +19,7 @@
         "ucs2"
       ]
     },
-    "source": {
+    "generator": {
       "description": "Adding custom implementation for encoding files.",
       "instanceof": "Function"
     },
