@@ -212,7 +212,7 @@ module.exports = {
 Type: `String`
 Default: `base64`
 
-Specify the encoding which the file will be in-lined with. It supports (Node.js Buffer Encodings)[https://www.w3resource.com/node.js/nodejs-buffer.php] If the encoding is not supported the default `base64` encoding will be used.
+Specify the encoding which the file will be in-lined with. It supports (Node.js Buffers and Character Encodings)[https://nodejs.org/api/buffer.html#buffer_buffers_and_character_encodings] which are `["utf8","utf16le","latin1","base64","hex","ascii","binary","ucs2"]`.
 
 **webpack.config.js**
 

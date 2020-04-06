@@ -7,7 +7,17 @@
     },
     "encoding": {
       "description": "Specify the encoding which the file will be in-lined with.",
-      "type": "string"
+      "type": "string",
+      "enum": [
+        "utf8",
+        "utf16le",
+        "latin1",
+        "base64",
+        "hex",
+        "ascii",
+        "binary",
+        "ucs2"
+      ]
     },
     "mimetype": {
       "description": "The MIME type for the file to be transformed (https://github.com/webpack-contrib/url-loader#mimetype).",

@@ -36,6 +36,7 @@ export default function loader(src) {
   if (shouldTransform(options.limit, src.length)) {
     const file = this.resourcePath;
     const mimetype = options.mimetype || mime.contentType(path.extname(file));
+    const encoding = options.encoding || 'base64';
 
     if (typeof src === 'string') {
       // eslint-disable-next-line no-param-reassign
@@ -45,18 +46,10 @@ export default function loader(src) {
     const esModule =
       typeof options.esModule !== 'undefined' ? options.esModule : true;
 
-    let encodedData;
-    try {
-      encodedData = src.toString(options.encoding || 'base64');
-    } catch (e) {
-      options.encoding = 'base64';
-      encodedData = src.toString(options.encoding);
-    }
-
     return `${
       esModule ? 'export default' : 'module.exports ='
     } ${JSON.stringify(
-      `data:${mimetype || ''};${options.encoding || 'base64'},${encodedData}`
+      `data:${mimetype || ''};${encoding},${src.toString(encoding)}`
     )}`;
   }
 
