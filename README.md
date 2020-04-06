@@ -254,7 +254,7 @@ module.exports = {
           {
             loader: 'url-loader',
             options: {
-              source: (svgContentBuffer) => {
+              generator: (svgContentBuffer) => {
                 const svgToMiniDataURI = require('mini-svg-data-uri');
 
                 return svgToMiniDataURI(svgContentBuffer.toString());
@@ -280,11 +280,8 @@ module.exports = {
           {
             loader: 'url-loader',
             options: {
-              source: (svgContentBuffer) => {
-                return `data:image/svg;utf8,${svgContentBuffer.toString(
-                  'utf8'
-                )}`;
-              },
+              generator: (svgContentBuffer) =>
+                `data:image/svg;utf8,${svgContentBuffer.toString('utf8')}`,
             },
           },
         ],
