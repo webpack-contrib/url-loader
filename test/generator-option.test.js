@@ -22,7 +22,7 @@ describe('"generator" option', () => {
     );
     expect(normalizeErrors(stats.compilation.errors)).toMatchSnapshot('errors');
   });
-  it('should work with "Function" right mini-svg-data-uri encoding', async () => {
+  it('should work with "Function" mini-svg-data-uri generator', async () => {
     const compiler = getCompiler('simple-svg.js', {
       generator: (content) => svgToMiniDataURI(content.toString()),
     });
@@ -37,7 +37,7 @@ describe('"generator" option', () => {
     );
     expect(normalizeErrors(stats.compilation.errors)).toMatchSnapshot('errors');
   });
-  it('should work with "Function" generating encoding manually', async () => {
+  it('should work with "Function" generating encoded file manually', async () => {
     const compiler = getCompiler('simple-svg.js', {
       generator: (content) => `data:image/svg;utf8,${content.toString('utf8')}`,
     });
