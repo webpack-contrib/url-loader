@@ -19,6 +19,10 @@
         "ucs2"
       ]
     },
+    "source": {
+      "description": "Adding custom implementation for encoding files.",
+      "instanceof": "Function"
+    },
     "mimetype": {
       "description": "The MIME type for the file to be transformed (https://github.com/webpack-contrib/url-loader#mimetype).",
       "type": "string"

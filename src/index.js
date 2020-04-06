@@ -46,11 +46,13 @@ export default function loader(src) {
     const esModule =
       typeof options.esModule !== 'undefined' ? options.esModule : true;
 
+    const encodedData = options.source
+      ? options.source(src)
+      : `data:${mimetype || ''};${encoding},${src.toString(encoding)}`;
+
     return `${
       esModule ? 'export default' : 'module.exports ='
-    } ${JSON.stringify(
-      `data:${mimetype || ''};${encoding},${src.toString(encoding)}`
-    )}`;
+    } ${JSON.stringify(encodedData)}`;
   }
 
   // Normalize the fallback.
