@@ -241,7 +241,7 @@ module.exports = {
 Type: `Function`
 Default: `data:${mimetype || ''};${encoding},${src.toString(encoding)}`
 
-You can create you own custom implementation for encoding data. in the example we are compressing svg files using [mini-svg-data-uri](https://github.com/tigt/mini-svg-data-uri) implementation.
+You can create you own custom implementation for encoding data. `source` argument is a [`Buffer`](https://nodejs.org/api/buffer.html) instance. in the example we are compressing svg files using [mini-svg-data-uri](https://github.com/tigt/mini-svg-data-uri) implementation.
 
 **webpack.config.js**
 
@@ -255,10 +255,10 @@ module.exports = {
           {
             loader: 'url-loader',
             options: {
-              source: (svgContent) => {
+              source: (svgContentBuffer) => {
                 const svgToMiniDataURI = require('mini-svg-data-uri');
 
-                return svgToMiniDataURI(svgContent);
+                return svgToMiniDataURI(svgContentBuffer.toString());
               },
             },
           },
@@ -281,8 +281,10 @@ module.exports = {
           {
             loader: 'url-loader',
             options: {
-              source: (svgContent) => {
-                return `data:image/svg;utf8,${svgContent}`;
+              source: (svgContentBuffer) => {
+                return `data:image/svg;utf8,${svgContentBuffer.toString(
+                  'utf8'
+                )}`;
               },
             },
           },

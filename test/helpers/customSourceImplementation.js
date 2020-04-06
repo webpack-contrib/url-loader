@@ -1,3 +1,9 @@
 export default (content) => {
-  return `data:image/svg+xml,${  content.trim().replace(/\s+/g, ' ')}`;
+  return (
+    `data:image/svg+xml,${ 
+    content
+      .toString()
+      .trim()
+      .replace(/\s+/g, ' ')}`
+  );
 };
