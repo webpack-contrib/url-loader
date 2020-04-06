@@ -47,7 +47,7 @@ export default function loader(src) {
       typeof options.esModule !== 'undefined' ? options.esModule : true;
 
     const encodedData = options.source
-      ? options.source(src)
+      ? options.source(src.toString())
       : `data:${mimetype || ''};${encoding},${src.toString(encoding)}`;
 
     return `${

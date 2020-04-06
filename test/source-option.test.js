@@ -4,9 +4,8 @@ import {
   getCompiler,
   normalizeErrors,
   readAsset,
+  customSourceImplementation,
 } from './helpers';
-
-const svgToMiniDataURI = require('mini-svg-data-uri');
 
 describe('"source" option', () => {
   it('should work with unspecified value with the default base64 encoding', async () => {
@@ -22,9 +21,9 @@ describe('"source" option', () => {
     );
     expect(normalizeErrors(stats.compilation.errors)).toMatchSnapshot('errors');
   });
-  it('should work with "Function" right mini-svg-data-uri encoding', async () => {
+  it('should work with "Function" right custom source implementation for encoding', async () => {
     const compiler = getCompiler('simple-svg.js', {
-      source: (file) => svgToMiniDataURI(file.toString()),
+      source: (content) => customSourceImplementation(content),
     });
     const stats = await compile(compiler);
 
