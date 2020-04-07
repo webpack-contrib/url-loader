@@ -38,7 +38,7 @@ export default function loader(src) {
     const mimetype = options.mimetype || mime.contentType(path.extname(file));
 
     const encoding =
-      options.encoding === true || options.encoding === undefined
+      options.encoding === true || typeof options.encoding === 'undefined'
         ? 'base64'
         : options.encoding;
 
