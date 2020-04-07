@@ -7,18 +7,22 @@
     },
     "encoding": {
       "description": "Specify the encoding which the file will be in-lined with.",
-      "type": ["boolean", "string"],
-      "enum": [
-        "utf8",
-        "utf16le",
-        "latin1",
-        "base64",
-        "hex",
-        "ascii",
-        "binary",
-        "ucs2",
-        true,
-        false
+      "oneOf": [
+        {
+          "enum": [
+            "utf8",
+            "utf16le",
+            "latin1",
+            "base64",
+            "hex",
+            "ascii",
+            "binary",
+            "ucs2"
+          ]
+        },
+        {
+          "type": "boolean"
+        }
       ]
     },
     "generator": {
