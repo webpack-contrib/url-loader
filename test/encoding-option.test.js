@@ -21,6 +21,38 @@ describe('"encoding" option', () => {
     expect(normalizeErrors(stats.compilation.errors)).toMatchSnapshot('errors');
   });
 
+  it('should work with "Boolean" true default (base64)', async () => {
+    const compiler = getCompiler('simple-svg.js', {
+      encoding: true,
+    });
+    const stats = await compile(compiler);
+
+    expect(
+      execute(readAsset('main.bundle.js', compiler, stats))
+    ).toMatchSnapshot('result');
+    expect(Object.keys(stats.compilation.assets)).toMatchSnapshot('assets');
+    expect(normalizeErrors(stats.compilation.warnings)).toMatchSnapshot(
+      'warnings'
+    );
+    expect(normalizeErrors(stats.compilation.errors)).toMatchSnapshot('errors');
+  });
+
+  it('should work with "Boolean" false default', async () => {
+    const compiler = getCompiler('simple-svg.js', {
+      encoding: false,
+    });
+    const stats = await compile(compiler);
+
+    expect(
+      execute(readAsset('main.bundle.js', compiler, stats))
+    ).toMatchSnapshot('result');
+    expect(Object.keys(stats.compilation.assets)).toMatchSnapshot('assets');
+    expect(normalizeErrors(stats.compilation.warnings)).toMatchSnapshot(
+      'warnings'
+    );
+    expect(normalizeErrors(stats.compilation.errors)).toMatchSnapshot('errors');
+  });
+
   it('should work with "String" right encoding value (utf8)', async () => {
     const compiler = getCompiler('simple-svg.js', {
       encoding: 'utf8',

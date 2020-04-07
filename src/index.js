@@ -36,7 +36,11 @@ export default function loader(src) {
   if (shouldTransform(options.limit, src.length)) {
     const file = this.resourcePath;
     const mimetype = options.mimetype || mime.contentType(path.extname(file));
-    const encoding = options.encoding || 'base64';
+
+    const encoding =
+      options.encoding === true || options.encoding === undefined
+        ? 'base64'
+        : options.encoding;
 
     if (typeof src === 'string') {
       // eslint-disable-next-line no-param-reassign
@@ -48,7 +52,9 @@ export default function loader(src) {
 
     const encodedData = options.generator
       ? options.generator(src)
-      : `data:${mimetype || ''};${encoding},${src.toString(encoding)}`;
+      : `data:${mimetype || ''}${encoding ? `;${encoding}` : ''},${
+          encoding ? src.toString(encoding) : src.toString()
+        }`;
 
     return `${
       esModule ? 'export default' : 'module.exports ='

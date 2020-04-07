@@ -209,10 +209,12 @@ module.exports = {
 
 ### `encoding`
 
-Type: `String`
+Type: `String|Boolean`
 Default: `base64`
 
 Specify the encoding which the file will be in-lined with. It supports [Node.js Buffers and Character Encodings](https://nodejs.org/api/buffer.html#buffer_buffers_and_character_encodings) which are `["utf8","utf16le","latin1","base64","hex","ascii","binary","ucs2"]`.
+
+> If you don't want to use any encoding you can set `encoding` to `false` however if you set it to `true` it will use the default encoding `base64`.
 
 **webpack.config.js**
 

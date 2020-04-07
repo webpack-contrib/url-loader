@@ -7,7 +7,7 @@
     },
     "encoding": {
       "description": "Specify the encoding which the file will be in-lined with.",
-      "type": "string",
+      "type": ["boolean", "string"],
       "enum": [
         "utf8",
         "utf16le",
@@ -16,7 +16,9 @@
         "hex",
         "ascii",
         "binary",
-        "ucs2"
+        "ucs2",
+        true,
+        false
       ]
     },
     "generator": {
