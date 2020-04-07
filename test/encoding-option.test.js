@@ -21,7 +21,7 @@ describe('"encoding" option', () => {
     expect(normalizeErrors(stats.compilation.errors)).toMatchSnapshot('errors');
   });
 
-  it('should work with "Boolean" true default (base64)', async () => {
+  it('should work with "Boolean" true (default base64)', async () => {
     const compiler = getCompiler('simple-svg.js', {
       encoding: true,
     });
@@ -37,7 +37,7 @@ describe('"encoding" option', () => {
     expect(normalizeErrors(stats.compilation.errors)).toMatchSnapshot('errors');
   });
 
-  it('should work with "Boolean" false default', async () => {
+  it('should work with "Boolean" false (no encoding)', async () => {
     const compiler = getCompiler('simple-svg.js', {
       encoding: false,
     });
