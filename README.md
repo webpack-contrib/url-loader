@@ -272,6 +272,8 @@ module.exports = {
 
 By using your own implementation, `mimetype` and `encoding` won't have effect on the final output. until you specify them in the output manually for Example:
 
+**webpack.config.js**
+
 ```js
 module.exports = {
   module: {
