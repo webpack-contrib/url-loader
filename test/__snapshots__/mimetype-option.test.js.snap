@@ -1,5 +1,80 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`"mimetype" option should work for unknown mimetype when value is false and encoding is false: assets 1`] = `
+Array [
+  "main.bundle.js",
+]
+`;
+
+exports[`"mimetype" option should work for unknown mimetype when value is false and encoding is false: errors 1`] = `Array []`;
+
+exports[`"mimetype" option should work for unknown mimetype when value is false and encoding is false: result 1`] = `
+"data:,test
+"
+`;
+
+exports[`"mimetype" option should work for unknown mimetype when value is false and encoding is false: warnings 1`] = `Array []`;
+
+exports[`"mimetype" option should work for unknown mimetype when value is true and encoding is true: assets 1`] = `
+Array [
+  "main.bundle.js",
+]
+`;
+
+exports[`"mimetype" option should work for unknown mimetype when value is true and encoding is true: errors 1`] = `Array []`;
+
+exports[`"mimetype" option should work for unknown mimetype when value is true and encoding is true: result 1`] = `"data:;base64,dGVzdAo="`;
+
+exports[`"mimetype" option should work for unknown mimetype when value is true and encoding is true: warnings 1`] = `Array []`;
+
+exports[`"mimetype" option should work for unknown mimetype when value is true: assets 1`] = `
+Array [
+  "main.bundle.js",
+]
+`;
+
+exports[`"mimetype" option should work for unknown mimetype when value is true: errors 1`] = `Array []`;
+
+exports[`"mimetype" option should work for unknown mimetype when value is true: result 1`] = `"data:;base64,dGVzdAo="`;
+
+exports[`"mimetype" option should work for unknown mimetype when value is true: warnings 1`] = `Array []`;
+
+exports[`"mimetype" option should work for unknown mimetype: assets 1`] = `
+Array [
+  "main.bundle.js",
+]
+`;
+
+exports[`"mimetype" option should work for unknown mimetype: errors 1`] = `Array []`;
+
+exports[`"mimetype" option should work for unknown mimetype: result 1`] = `"data:;base64,dGVzdAo="`;
+
+exports[`"mimetype" option should work for unknown mimetype: warnings 1`] = `Array []`;
+
+exports[`"mimetype" option should work with "Boolean" false: assets 1`] = `
+Array [
+  "main.bundle.js",
+]
+`;
+
+exports[`"mimetype" option should work with "Boolean" false: errors 1`] = `Array []`;
+
+exports[`"mimetype" option should work with "Boolean" false: result 1`] = `"data:;base64,PGgxPkhlbGxvLCBXb3JsZCEg0J/RgNC40LLQtdGCINC80LjRgCE8L2gxPgo="`;
+
+exports[`"mimetype" option should work with "Boolean" false: warnings 1`] = `Array []`;
+
+exports[`"mimetype" option should work with "Boolean" true: assets 1`] = `
+Array [
+  "main.bundle.js",
+]
+`;
+
+exports[`"mimetype" option should work with "Boolean" true: errors 1`] = `Array []`;
+
+exports[`"mimetype" option should work with "Boolean" true: result 1`] = `"data:text/html;charset=utf-8;base64,PGgxPkhlbGxvLCBXb3JsZCEg0J/RgNC40LLQtdGCINC80LjRgCE8L2gxPgo="`;
+
+exports[`"mimetype" option should work with "Boolean" true: warnings 1`] = `Array []`;
+
 exports[`"mimetype" option should work with "String" value equal to unknown/unknown: assets 1`] = `
 Array [
   "main.bundle.js",

@@ -59,13 +59,243 @@ And run `webpack` via your preferred method.
 
 ## Options
 
+|             Name              |            Type             |                            Default                            | Description                                                                         |
+| :---------------------------: | :-------------------------: | :-----------------------------------------------------------: | :---------------------------------------------------------------------------------- |
+|     **[`limit`](#limit)**     | `{Boolean\|Number\|String}` |                            `true`                             | Specifying the maximum size of a file in bytes.                                     |
+|  **[`mimetype`](#mimetype)**  |     `{Boolean\|String}`     | based from [mime-types](https://github.com/jshttp/mime-types) | Sets the MIME type for the file to be transformed.                                  |
+|  **[`encoding`](#encoding)**  |     `{Boolean\|String}`     |                           `base64`                            | Specify the encoding which the file will be inlined with.                           |
+| **[`generator`](#generator)** |        `{Function}`         |           `() => type/subtype;encoding,base64_data`           | You can create you own custom implementation for encoding data.                     |
+|  **[`fallback`](#fallback)**  |         `{String}`          |                         `file-loader`                         | Specifies an alternative loader to use when a target file's size exceeds the limit. |
+|  **[`esModule`](#esmodule)**  |         `{Boolean}`         |                            `true`                             | Use ES modules syntax.                                                              |
+
+### `limit`
+
+Type: `Boolean|Number|String`
+Default: `undefined`
+
+The limit can be specified via loader options and defaults to no limit.
+
+#### `Boolean`
+
+Enable or disable transform files into base64.
+
+**webpack.config.js**
+
+```js
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.(png|jpg|gif)$/i,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: false,
+            },
+          },
+        ],
+      },
+    ],
+  },
+};
+```
+
+#### `Number|String`
+
+A `Number` or `String` specifying the maximum size of a file in bytes.
+If the file size is **equal** or **greater** than the limit [`file-loader`](https://github.com/webpack-contrib/file-loader) will be used (by default) and all query parameters are passed to it.
+
+Using an alternative to `file-loader` is enabled via the `fallback` option.
+
+**webpack.config.js**
+
+```js
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.(png|jpg|gif)$/i,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192,
+            },
+          },
+        ],
+      },
+    ],
+  },
+};
+```
+
+### `mimetype`
+
+Type: `Boolean|String`
+Default: based from [mime-types](https://github.com/jshttp/mime-types)
+
+Specify the `mimetype` which the file will be inlined with.
+If unspecified the `mimetype` value will be used from [mime-types](https://github.com/jshttp/mime-types).
+
+#### `Boolean`
+
+The `true` value allows to generation the `mimetype` part from [mime-types](https://github.com/jshttp/mime-types).
+The `false` value removes the `mediatype` part from a Data URL (if omitted, defaults to `text/plain;charset=US-ASCII`).
+
+**webpack.config.js**
+
+```js
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.(png|jpg|gif)$/i,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              mimetype: false,
+            },
+          },
+        ],
+      },
+    ],
+  },
+};
+```
+
+#### `String`
+
+Sets the MIME type for the file to be transformed.
+
+**webpack.config.js**
+
+```js
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.(png|jpg|gif)$/i,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              mimetype: 'image/png',
+            },
+          },
+        ],
+      },
+    ],
+  },
+};
+```
+
+### `encoding`
+
+Type: `Boolean|String`
+Default: `base64`
+
+Specify the `encoding` which the file will be inlined with.
+If unspecified the `encoding` will be `base64`.
+
+#### `Boolean`
+
+If you don't want to use any encoding you can set `encoding` to `false` however if you set it to `true` it will use the default encoding `base64`.
+
+**webpack.config.js**
+
+```js
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.svg$/i,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              encoding: false,
+            },
+          },
+        ],
+      },
+    ],
+  },
+};
+```
+
+#### `String`
+
+It supports [Node.js Buffers and Character Encodings](https://nodejs.org/api/buffer.html#buffer_buffers_and_character_encodings) which are `["utf8","utf16le","latin1","base64","hex","ascii","binary","ucs2"]`.
+
+**webpack.config.js**
+
+```js
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.svg$/i,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              encoding: 'utf8',
+            },
+          },
+        ],
+      },
+    ],
+  },
+};
+```
+
+### `generator`
+
+Type: `Function`
+Default: `(mimetype, encoding, content, resourcePath) => mimetype;encoding,base64_content`
+
+You can create you own custom implementation for encoding data.
+
+**webpack.config.js**
+
+```js
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.(png|html)$/i,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              // The `mimetype` and `encoding` arguments will be obtained from your options
+              // The `resourcePath` argument is path to file.
+              generator: (content, mimetype, encoding, resourcePath) => {
+                if (/\.html$/i.test(resourcePath)) {
+                  return `data:${mimetype},${content.toString()}`;
+                }
+
+                return `data:${mimetype}${
+                  encoding ? `;${encoding}` : ''
+                },${content.toString(encoding)}`;
+              },
+            },
+          },
+        ],
+      },
+    ],
+  },
+};
+```
+
 ### `fallback`
 
 Type: `String`
 Default: `'file-loader'`
 
-Specifies an alternative loader to use when a target file's size exceeds the
-limit set in the `limit` option.
+Specifies an alternative loader to use when a target file's size exceeds the limit set in the `limit` option.
 
 **webpack.config.js**
 
@@ -116,185 +346,6 @@ module.exports = {
 };
 ```
 
-### `limit`
-
-Type: `Number|Boolean|String`
-Default: `undefined`
-
-The limit can be specified via loader options and defaults to no limit.
-
-#### `Number|String`
-
-A `Number` or `String` specifying the maximum size of a file in bytes. If the file size is
-**equal** or **greater** than the limit [`file-loader`](https://github.com/webpack-contrib/file-loader)
-will be used (by default) and all query parameters are passed to it.
-Using an alternative to `file-loader` is enabled via the `fallback` option.
-
-**webpack.config.js**
-
-```js
-module.exports = {
-  module: {
-    rules: [
-      {
-        test: /\.(png|jpg|gif)$/i,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 8192,
-            },
-          },
-        ],
-      },
-    ],
-  },
-};
-```
-
-#### `Boolean`
-
-Enable or disable transform files into base64.
-
-**webpack.config.js**
-
-```js
-module.exports = {
-  module: {
-    rules: [
-      {
-        test: /\.(png|jpg|gif)$/i,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: false,
-            },
-          },
-        ],
-      },
-    ],
-  },
-};
-```
-
-### `mimetype`
-
-Type: `String`
-Default: `(file extension)`
-
-Sets the MIME type for the file to be transformed. If unspecified the file extensions will be used to lookup the MIME type.
-
-**webpack.config.js**
-
-```js
-module.exports = {
-  module: {
-    rules: [
-      {
-        test: /\.(png|jpg|gif)$/i,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              mimetype: 'image/png',
-            },
-          },
-        ],
-      },
-    ],
-  },
-};
-```
-
-### `encoding`
-
-Type: `String|Boolean`
-Default: `base64`
-
-Specify the encoding which the file will be in-lined with. It supports [Node.js Buffers and Character Encodings](https://nodejs.org/api/buffer.html#buffer_buffers_and_character_encodings) which are `["utf8","utf16le","latin1","base64","hex","ascii","binary","ucs2"]`.
-
-> If you don't want to use any encoding you can set `encoding` to `false` however if you set it to `true` it will use the default encoding `base64`.
-
-**webpack.config.js**
-
-```js
-module.exports = {
-  module: {
-    rules: [
-      {
-        test: /\.svg$/i,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              encoding: 'utf8',
-            },
-          },
-        ],
-      },
-    ],
-  },
-};
-```
-
-### `generator`
-
-Type: `Function`
-
-You can create you own custom implementation for encoding data. `generator` argument is a [`Buffer`](https://nodejs.org/api/buffer.html) instance of the file. in the example we are compressing svg files using [mini-svg-data-uri](https://github.com/tigt/mini-svg-data-uri) implementation.
-
-**webpack.config.js**
-
-```js
-module.exports = {
-  module: {
-    rules: [
-      {
-        test: /\.svg$/i,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              generator: (svgContentBuffer) => {
-                const svgToMiniDataURI = require('mini-svg-data-uri');
-
-                return svgToMiniDataURI(svgContentBuffer.toString());
-              },
-            },
-          },
-        ],
-      },
-    ],
-  },
-};
-```
-
-By using your own implementation, `mimetype` and `encoding` won't have effect on the final output. until you specify them in the output manually for Example:
-
-**webpack.config.js**
-
-```js
-module.exports = {
-  module: {
-    rules: [
-      {
-        test: /\.svg$/i,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              generator: (svgContentBuffer) =>
-                `data:image/svg;utf8,${svgContentBuffer.toString('utf8')}`,
-            },
-          },
-        ],
-      },
-    ],
-  },
-};
-```
-
 ### `esModule`
 
 Type: `Boolean`
@@ -318,6 +369,38 @@ module.exports = {
             loader: 'url-loader',
             options: {
               esModule: false,
+            },
+          },
+        ],
+      },
+    ],
+  },
+};
+```
+
+## Examples
+
+### SVG
+
+SVG can be compressed into a more compact output, avoiding `base64`.
+You can read about it more [here](https://css-tricks.com/probably-dont-base64-svg/).
+You can do it using [mini-svg-data-uri](https://github.com/tigt/mini-svg-data-uri) package.
+
+**webpack.config.js**
+
+```js
+const svgToMiniDataURI = require('mini-svg-data-uri');
+
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.svg$/i,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              generator: (content) => svgToMiniDataURI(content.toString()),
             },
           },
         ],
@@ -351,3 +434,7 @@ Please take a moment to read our contributing guidelines if you haven't yet done
 [chat-url]: https://gitter.im/webpack/webpack
 [size]: https://packagephobia.now.sh/badge?p=url-loader
 [size-url]: https://packagephobia.now.sh/result?p=url-loader
+
+```
+
+```

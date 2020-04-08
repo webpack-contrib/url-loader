@@ -31,8 +31,12 @@ exports[`validate options should throw an error on the "limit" option with "{}" 
    -> Enables/Disables transformation target file into base64 URIs (https://github.com/webpack-contrib/url-loader#limit)."
 `;
 
-exports[`validate options should throw an error on the "mimetype" option with "false" value 1`] = `
+exports[`validate options should throw an error on the "mimetype" option with "() => {}" value 1`] = `
 "Invalid options object. URL Loader has been initialized using an options object that does not match the API schema.
- - options.mimetype should be a string.
-   -> The MIME type for the file to be transformed (https://github.com/webpack-contrib/url-loader#mimetype)."
+ - options.mimetype should be one of these:
+   boolean | string
+   -> The MIME type for the file to be transformed (https://github.com/webpack-contrib/url-loader#mimetype).
+   Details:
+    * options.mimetype should be a boolean.
+    * options.mimetype should be a string."
 `;

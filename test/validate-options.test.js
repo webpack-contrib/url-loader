@@ -7,8 +7,8 @@ describe('validate options', () => {
       failure: [{}, []],
     },
     mimetype: {
-      success: ['image/png', 'unknown/unknown'],
-      failure: [false],
+      success: ['image/png', 'unknown/unknown', true, false],
+      failure: [() => {}],
     },
     fallback: {
       success: [
