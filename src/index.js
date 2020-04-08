@@ -23,7 +23,58 @@ function shouldTransform(limit, size) {
   return true;
 }
 
-export default function loader(src) {
+function getMimetype(mimetype, resourcePath) {
+  if (typeof mimetype === 'boolean') {
+    if (mimetype) {
+      const resolvedMimeType = mime.contentType(path.extname(resourcePath));
+
+      if (!resolvedMimeType) {
+        return '';
+      }
+
+      return resolvedMimeType.replace(/;\s+charset/i, ';charset');
+    }
+
+    return '';
+  }
+
+  if (typeof mimetype === 'string') {
+    return mimetype;
+  }
+
+  const resolvedMimeType = mime.contentType(path.extname(resourcePath));
+
+  if (!resolvedMimeType) {
+    return '';
+  }
+
+  return resolvedMimeType.replace(/;\s+charset/i, ';charset');
+}
+
+function getEncoding(encoding) {
+  if (typeof encoding === 'boolean') {
+    return encoding ? 'base64' : '';
+  }
+
+  if (typeof encoding === 'string') {
+    return encoding;
+  }
+
+  return 'base64';
+}
+
+function getEncodedData(generator, mimetype, encoding, content, resourcePath) {
+  if (generator) {
+    return generator(content, mimetype, encoding, resourcePath);
+  }
+
+  return `data:${mimetype}${encoding ? `;${encoding}` : ''},${content.toString(
+    // eslint-disable-next-line no-undefined
+    encoding || undefined
+  )}`;
+}
+
+export default function loader(content) {
   // Loader Options
   const options = getOptions(this) || {};
 
@@ -33,28 +84,26 @@ export default function loader(src) {
   });
 
   // No limit or within the specified limit
-  if (shouldTransform(options.limit, src.length)) {
-    const file = this.resourcePath;
-    const mimetype = options.mimetype || mime.contentType(path.extname(file));
+  if (shouldTransform(options.limit, content.length)) {
+    const { resourcePath } = this;
+    const mimetype = getMimetype(options.mimetype, resourcePath);
+    const encoding = getEncoding(options.encoding);
 
-    const encoding =
-      options.encoding === true || typeof options.encoding === 'undefined'
-        ? 'base64'
-        : options.encoding;
-
-    if (typeof src === 'string') {
+    if (typeof content === 'string') {
       // eslint-disable-next-line no-param-reassign
-      src = Buffer.from(src);
+      content = Buffer.from(content);
     }
+
+    const encodedData = getEncodedData(
+      options.generator,
+      mimetype,
+      encoding,
+      content,
+      resourcePath
+    );
 
     const esModule =
       typeof options.esModule !== 'undefined' ? options.esModule : true;
-
-    const encodedData = options.generator
-      ? options.generator(src)
-      : `data:${mimetype || ''}${encoding ? `;${encoding}` : ''},${
-          encoding ? src.toString(encoding) : src.toString()
-        }`;
 
     return `${
       esModule ? 'export default' : 'module.exports ='
@@ -77,7 +126,7 @@ export default function loader(src) {
     query: fallbackOptions,
   });
 
-  return fallback.call(fallbackLoaderContext, src);
+  return fallback.call(fallbackLoaderContext, content);
 }
 
 // Loader Mode

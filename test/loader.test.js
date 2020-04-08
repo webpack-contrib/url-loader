@@ -73,7 +73,7 @@ describe('loader', () => {
 
   it('should work with ModuleConcatenationPlugin', async () => {
     const compiler = getCompiler(
-      'simple.js',
+      'concated.js',
       {},
       {
         mode: 'production',
@@ -92,17 +92,11 @@ describe('loader', () => {
       'warnings'
     );
     expect(normalizeErrors(stats.compilation.errors)).toMatchSnapshot('errors');
-
-    if (stats.compilation.modules.size) {
-      expect(stats.compilation.modules.size).toBe(1);
-    } else {
-      expect(stats.compilation.modules.length).toBe(1);
-    }
   });
 
   it('should work with ModuleConcatenationPlugin with fallback', async () => {
     const compiler = getCompiler(
-      'simple.js',
+      'concated.js',
       {
         limit: 10,
       },
@@ -123,11 +117,5 @@ describe('loader', () => {
       'warnings'
     );
     expect(normalizeErrors(stats.compilation.errors)).toMatchSnapshot('errors');
-
-    if (stats.compilation.modules.size) {
-      expect(stats.compilation.modules.size).toBe(2);
-    } else {
-      expect(stats.compilation.modules.length).toBe(1);
-    }
   });
 });

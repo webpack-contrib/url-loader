@@ -13,10 +13,8 @@ export default (code) => {
   module.filename = resource;
 
   // eslint-disable-next-line no-underscore-dangle
-  module._compile(
-    `let __export__;${code};module.exports = __export__;`,
-    resource
-  );
+  module._compile(code, resource);
 
-  return module.exports;
+  // eslint-disable-next-line no-underscore-dangle
+  return module.exports.__esModule ? module.exports.default : module.exports;
 };

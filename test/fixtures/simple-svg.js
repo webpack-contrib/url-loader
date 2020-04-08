@@ -1,6 +1,4 @@
 /* eslint-disable */
-import png from './file.svg';
+import svg from './file.svg';
 
-__export__ = png;
-
-export default png;
+export default svg;
