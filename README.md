@@ -207,6 +207,94 @@ module.exports = {
 };
 ```
 
+### `encoding`
+
+Type: `String|Boolean`
+Default: `base64`
+
+Specify the encoding which the file will be in-lined with. It supports [Node.js Buffers and Character Encodings](https://nodejs.org/api/buffer.html#buffer_buffers_and_character_encodings) which are `["utf8","utf16le","latin1","base64","hex","ascii","binary","ucs2"]`.
+
+> If you don't want to use any encoding you can set `encoding` to `false` however if you set it to `true` it will use the default encoding `base64`.
+
+**webpack.config.js**
+
+```js
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.svg$/i,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              encoding: 'utf8',
+            },
+          },
+        ],
+      },
+    ],
+  },
+};
+```
+
+### `generator`
+
+Type: `Function`
+
+You can create you own custom implementation for encoding data. `generator` argument is a [`Buffer`](https://nodejs.org/api/buffer.html) instance of the file. in the example we are compressing svg files using [mini-svg-data-uri](https://github.com/tigt/mini-svg-data-uri) implementation.
+
+**webpack.config.js**
+
+```js
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.svg$/i,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              generator: (svgContentBuffer) => {
+                const svgToMiniDataURI = require('mini-svg-data-uri');
+
+                return svgToMiniDataURI(svgContentBuffer.toString());
+              },
+            },
+          },
+        ],
+      },
+    ],
+  },
+};
+```
+
+By using your own implementation, `mimetype` and `encoding` won't have effect on the final output. until you specify them in the output manually for Example:
+
+**webpack.config.js**
+
+```js
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.svg$/i,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              generator: (svgContentBuffer) =>
+                `data:image/svg;utf8,${svgContentBuffer.toString('utf8')}`,
+            },
+          },
+        ],
+      },
+    ],
+  },
+};
+```
+
 ### `esModule`
 
 Type: `Boolean`
