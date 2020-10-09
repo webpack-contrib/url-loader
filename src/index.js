@@ -1,7 +1,7 @@
 import path from 'path';
 
 import { getOptions } from 'loader-utils';
-import validateOptions from 'schema-utils';
+import { validate } from 'schema-utils';
 import mime from 'mime-types';
 
 import normalizeFallback from './utils/normalizeFallback';
@@ -78,7 +78,7 @@ export default function loader(content) {
   // Loader Options
   const options = getOptions(this) || {};
 
-  validateOptions(schema, options, {
+  validate(schema, options, {
     name: 'URL Loader',
     baseDataPath: 'options',
   });
