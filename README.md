@@ -13,7 +13,7 @@
 
 # url-loader
 
-**DEPREACTED for v5**: please consider to migarte on [`asset modules`](https://webpack.js.org/guides/asset-modules/).
+**DEPREACTED for v5**: please consider migrating to [`asset modules`](https://webpack.js.org/guides/asset-modules/).
 
 A loader for webpack which transforms files into base64 URIs.
 
